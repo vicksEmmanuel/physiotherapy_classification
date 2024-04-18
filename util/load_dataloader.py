@@ -64,6 +64,67 @@ def draw_image(sample_1):
     boxes = sample_1['ori_boxes']  # Retrieve bounding box data
     show_image(frame, boxes)
 
+
+def plot_image(frame, boxes):
+    fig, ax = plt.subplots(1)
+    ax.imshow(frame)
+    ax.axis('off')  # Hide the axis
+    H, W = frame.shape[:2]  # Height and Width of the frame
+    print(f"{H} {W}")
+    
+    for box in boxes:
+        x_center, y_center, width, height = box
+        x_min = (x_center - width / 2) * W
+        y_min = (y_center - height / 2) * H
+        x_max = (x_center + width / 2) * W
+        y_max = (y_center + height / 2) * H
+        rect = patches.Rectangle((x_min, y_min), width * W, height * H, linewidth=1, edgecolor='r', facecolor='none')
+        ax.add_patch(rect)
+    
+    return fig
+
+
+def visualize_dataset(dataset, num_images=10):
+    num_rows = 5
+    num_cols = num_images // num_rows
+    fig, axes = plt.subplots(num_rows, num_cols, figsize=(12, 12))
+    
+    # Flatten the axes array to handle different subplot dimensions
+    axes = axes.flatten()
+    
+    for i in range(num_images):
+        sample = next(dataset)
+        print(sample)
+        frame = sample['video'][0]  # Access the first video in the batch
+        frame = frame[0, :, :].detach().cpu().numpy()
+        frame = (frame - frame.min()) / (frame.max() - frame.min())
+        boxes = sample['ori_boxes']  # Retrieve bounding box data
+        labels = sample['labels']  # Retrieve labels
+        
+        axes[i].imshow(frame)
+        axes[i].axis('off')
+        
+        H, W = frame.shape[:2]  # Height and Width of the frame
+        for box, label in zip(boxes, labels):
+            x_center, y_center, width, height = box
+            x_min = (x_center - width / 2) * W
+            y_min = (y_center - height / 2) * H
+            x_max = (x_center + width / 2) * W
+            y_max = (y_center + height / 2) * H
+            rect = patches.Rectangle((x_min, y_min), width * W, height * H, linewidth=1, edgecolor='r', facecolor='none')
+            axes[i].add_patch(rect)
+            
+            # Display the label above the bounding box
+            axes[i].text(x_min, y_min - 5, str(label), color='r', fontsize=8, verticalalignment='top')
+    
+    # Remove any unused subplots
+    for j in range(i+1, len(axes)):
+        fig.delaxes(axes[j])
+    
+    plt.tight_layout()
+    plt.show()
+
+
 def visualize_ava_dataset(dataset):
     # All videos are of the form cthw and fps is 30
     # Clip is samples at time step = 2 secs in video
@@ -109,6 +170,7 @@ def prepare_ava_dataset(phase='train', config=CFG):
 
     # Shows a picture of the first video in the dataset
     # visualize_ava_dataset(iterable_dataset)
+    visualize_dataset(iterable_dataset)
     return loader
 
 class AvaDataset(IterableDataset):

@@ -81,17 +81,30 @@ def generate_frames(data_path, dataset_type):
                 frame_number = str(frame_index).zfill(padding)
 
 
+                width_scale = 256 / image_width
+                height_scale = 256 / image_height
+
+                # Function to transform a bounding box
+                def transform_bounding_box(box, width_scale, height_scale):
+                    (x1, y1), (x2, y2) = box['exterior']
+                    new_x1 = x1 * width_scale
+                    new_y1 = y1 * height_scale
+                    new_x2 = x2 * width_scale
+                    new_y2 = y2 * height_scale
+                    return [(new_x1, new_y1), (new_x2, new_y2)]
+                
+
+                figure['geometry']['points']['exterior'] = transform_bounding_box(
+                    figure['geometry']['points'],
+                    width_scale,
+                    height_scale
+                )
+
                 x1, y1 = figure['geometry']['points']['exterior'][0]
                 x2, y2 = figure['geometry']['points']['exterior'][1]
-                
-                # Calculate the normalized coordinates
-                normalized_x_center = (x1 + x2) / (2 * image_width)
-                normalized_y_center = (y1 + y2) / (2 * image_height)
-                normalized_width = (x2 - x1) / image_width
-                normalized_height = (y2 - y1) / image_height
 
-                normalized_top_left = normalize_coordinates((x1, y1), image_width, image_height)
-                normalized_bottom_right = normalize_coordinates((x2, y2), image_width, image_height)
+                normalized_top_left = normalize_coordinates((x1, y1), 256, 256)
+                normalized_bottom_right = normalize_coordinates((x2, y2), 256, 256)
 
                 print(f"Normalized top left: {normalized_top_left} Normalized bottom right: {normalized_bottom_right}")
                 
@@ -100,9 +113,7 @@ def generate_frames(data_path, dataset_type):
 
 
                 csv_writer.writerow([
-                    video_id, frame_number, 
-                    # normalized_x_center, normalized_y_center,
-                    # normalized_width, normalized_height,
+                    video_id, frame_number,
                     x1, y1, x2, y2,
                     class_id,
                     65
