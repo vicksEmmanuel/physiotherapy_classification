@@ -174,6 +174,7 @@ def process_data():
 
     generate_frames("data/video_actions_annotated_data/train", 'train')
     generate_frames("data/video_actions_annotated_data/test", 'test')
+    generate_frames("data/video_actions_annotated_data/val", 'val')
 
 
 process_data()

@@ -80,7 +80,7 @@ def train(config):
 
     last_checkpoint = "checkpoints/last.ckpt"
     trainer.fit(model, loaders['train'], loaders['val'], ckpt_path=last_checkpoint)
-    # trainer.test(model, loaders['test'])
+    trainer.test(model, loaders['test'])
 
 train(CFG)
     
