@@ -36,7 +36,7 @@ def show_image(frame, boxes):
                                  linewidth=1, edgecolor='r', facecolor='none')
         ax.add_patch(rect)
     
-    plt.show(block=False)
+    plt.show(block=True)
     plt.pause(.1)
 
 
@@ -97,7 +97,7 @@ def prepare_ava_dataset(phase='train', config=CFG):
         transform=transform
     )
 
-    dataset = AvaDataset(iterable_dataset)
+    # dataset = AvaDataset(iterable_dataset)
 
     loader = DataLoader(
         iterable_dataset, 
@@ -108,7 +108,7 @@ def prepare_ava_dataset(phase='train', config=CFG):
     )
 
     # Shows a picture of the first video in the dataset
-    visualize_ava_dataset(dataset)
+    # visualize_ava_dataset(iterable_dataset)
     return loader
 
 class AvaDataset(IterableDataset):

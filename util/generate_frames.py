@@ -6,6 +6,13 @@ import json
 from actions import Action
 import shutil
 
+
+def normalize_coordinates(corner, width, height):
+    x, y = corner
+    normalized_x = x / width
+    normalized_y = y / height
+    return (normalized_x, normalized_y)
+
 # This function generates the csv data that holds the frames, frames location, and video properties
 def generate_frames(data_path, dataset_type):
 
@@ -82,13 +89,21 @@ def generate_frames(data_path, dataset_type):
                 normalized_y_center = (y1 + y2) / (2 * image_height)
                 normalized_width = (x2 - x1) / image_width
                 normalized_height = (y2 - y1) / image_height
+
+                normalized_top_left = normalize_coordinates((x1, y1), image_width, image_height)
+                normalized_bottom_right = normalize_coordinates((x2, y2), image_width, image_height)
+
+                print(f"Normalized top left: {normalized_top_left} Normalized bottom right: {normalized_bottom_right}")
                 
+                x1, y1 = normalized_top_left
+                x2, y2 = normalized_bottom_right
 
 
                 csv_writer.writerow([
                     video_id, frame_number, 
-                    normalized_x_center, normalized_y_center,
-                    normalized_width, normalized_height,
+                    # normalized_x_center, normalized_y_center,
+                    # normalized_width, normalized_height,
+                    x1, y1, x2, y2,
                     class_id,
                     65
                 ])

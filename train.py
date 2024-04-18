@@ -48,15 +48,9 @@ def train(config):
             for p in [ 'train', 'val'] 
     }
 
-   
-
-    print("Loaders created")
-    
-    
-
 
     checkpoint_callback = ModelCheckpoint(
-        dirpath='ava_checkpoints/', # Directory where the checkpoints will be saved
+        dirpath='checkpoints/', # Directory where the checkpoints will be saved
         filename='{epoch}-{val_loss:.2f}', # File name, which can include values from logging
         save_top_k=1, # Save the top 3 models according to the metric monitored below
         verbose=True,
@@ -84,7 +78,7 @@ def train(config):
         ],
     )
 
-    last_checkpoint = "ava_checkpoints/last.ckpt"
+    last_checkpoint = "checkpoints/last.ckpt"
     trainer.fit(model, loaders['train'], loaders['val'], ckpt_path=last_checkpoint)
     # trainer.test(model, loaders['test'])
 
