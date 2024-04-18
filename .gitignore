@@ -1,0 +1,11 @@
+data/frames/*
+__pycache__
+__pycache__/
+/__pycache__/
+/__pycache__
+**/**/__pycache__/
+*/__pycache__/*
+__pycache__/*
+model/__pycache__/
+data/frames_dataset/annotations/*
+data/frames_dataset/frame_lists/*
