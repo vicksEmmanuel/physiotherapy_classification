@@ -84,32 +84,62 @@ def generate_frames(data_path, dataset_type):
                 width_scale = 256 / image_width
                 height_scale = 256 / image_height
 
+
+              
+
                 # Function to transform a bounding box
-                def transform_bounding_box(box, width_scale, height_scale):
-                    (x1, y1), (x2, y2) = box['exterior']
-                    new_x1 = x1 * width_scale
-                    new_y1 = y1 * height_scale
-                    new_x2 = x2 * width_scale
-                    new_y2 = y2 * height_scale
-                    return [(new_x1, new_y1), (new_x2, new_y2)]
+                # def transform_bounding_box(box, width_scale, height_scale):
+                #     (x1, y1), (x2, y2) = box['exterior']
+                #     new_x1 = x1 * width_scale
+                #     new_y1 = y1 * height_scale
+                #     new_x2 = x2 * width_scale
+                #     new_y2 = y2 * height_scale
+                #     return [(new_x1, new_y1), (new_x2, new_y2)]
                 
 
-                figure['geometry']['points']['exterior'] = transform_bounding_box(
-                    figure['geometry']['points'],
-                    width_scale,
-                    height_scale
-                )
+                # figure['geometry']['points']['exterior'] = transform_bounding_box(
+                #     figure['geometry']['points'],
+                #     width_scale,
+                #     height_scale
+                # )
 
-                x1, y1 = figure['geometry']['points']['exterior'][0]
-                x2, y2 = figure['geometry']['points']['exterior'][1]
+                # x1, y1 = figure['geometry']['points']['exterior'][0]
+                # x2, y2 = figure['geometry']['points']['exterior'][1]
 
-                normalized_top_left = normalize_coordinates((x1, y1), 256, 256)
-                normalized_bottom_right = normalize_coordinates((x2, y2), 256, 256)
 
-                print(f"Normalized top left: {normalized_top_left} Normalized bottom right: {normalized_bottom_right}")
+                # normalized_top_left = normalize_coordinates((x1, y1), 256, 256)
+                # normalized_bottom_right = normalize_coordinates((x2, y2), 256, 256)
+
+                # print(f"Normalized top left: {normalized_top_left} Normalized bottom right: {normalized_bottom_right}")
                 
-                x1, y1 = normalized_top_left
-                x2, y2 = normalized_bottom_right
+                # x1, y1 = normalized_top_left
+                # x2, y2 = normalized_bottom_right
+
+
+
+                (x1, y1), (x2, y2) = figure['geometry']['points']['exterior']
+                
+                # Calculate the center of the bounding box
+                x_center = (x1 + x2) / 2.0
+                y_center = (y1 + y2) / 2.0
+                
+                # Calculate the width and height of the bounding box
+                width = x2 - x1
+                height = y2 - y1
+                
+                # Normalize the center coordinates and dimensions
+                normalized_x_center = x_center / image_width
+                normalized_y_center = y_center / image_height
+                normalized_width = width / image_width
+                normalized_height = height / image_height
+
+                x1 = float(f"{normalized_x_center:.4f}")
+                y1 = float(f"{normalized_y_center:.4f}")
+                x2 = float(f"{normalized_width:.4f}")
+                y2 = float(f"{normalized_height:.4f}")
+
+
+                print(f"{x1} {y1} {x2} {y2} =====>")
 
 
                 csv_writer.writerow([
