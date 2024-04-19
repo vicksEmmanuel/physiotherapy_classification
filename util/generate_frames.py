@@ -63,6 +63,7 @@ def generate_frames(data_path, dataset_type):
 
                 # Find object_id in objects
                 for obj in objects:
+                    print(f"{obj['id']} == {object_id}")
                     if obj['id'] == object_id:
                         class_title = obj['classTitle']
                         break
@@ -70,6 +71,8 @@ def generate_frames(data_path, dataset_type):
                 class_id = None
 
                 for index in range(0, len(Action().action)):
+                    print(f"{Action().action[index]} == {class_title}")
+
                     if Action().action[index] == class_title:
                         class_id = index
                         break
@@ -83,38 +86,6 @@ def generate_frames(data_path, dataset_type):
 
                 width_scale = 256 / image_width
                 height_scale = 256 / image_height
-
-
-              
-
-                # Function to transform a bounding box
-                # def transform_bounding_box(box, width_scale, height_scale):
-                #     (x1, y1), (x2, y2) = box['exterior']
-                #     new_x1 = x1 * width_scale
-                #     new_y1 = y1 * height_scale
-                #     new_x2 = x2 * width_scale
-                #     new_y2 = y2 * height_scale
-                #     return [(new_x1, new_y1), (new_x2, new_y2)]
-                
-
-                # figure['geometry']['points']['exterior'] = transform_bounding_box(
-                #     figure['geometry']['points'],
-                #     width_scale,
-                #     height_scale
-                # )
-
-                # x1, y1 = figure['geometry']['points']['exterior'][0]
-                # x2, y2 = figure['geometry']['points']['exterior'][1]
-
-
-                # normalized_top_left = normalize_coordinates((x1, y1), 256, 256)
-                # normalized_bottom_right = normalize_coordinates((x2, y2), 256, 256)
-
-                # print(f"Normalized top left: {normalized_top_left} Normalized bottom right: {normalized_bottom_right}")
-                
-                # x1, y1 = normalized_top_left
-                # x2, y2 = normalized_bottom_right
-
 
 
                 (x1, y1), (x2, y2) = figure['geometry']['points']['exterior']
@@ -152,12 +123,13 @@ def generate_frames(data_path, dataset_type):
                 csv_file.close()
 
 
+        for index in range(frames_count):
             csv_file = open(save_path, 'a', newline='')
             csv_writer = csv.writer(csv_file, delimiter=' ')
             padding = len(str(frames_count))
-            frame_number = str(frame_index).zfill(padding)
+            frame_number = str(index + 1).zfill(padding)
             file_name  = f"data/frames/{video_id}/{video_id}_00{frame_number}.jpg"
-            csv_writer.writerow([video_id, video_id, frame_index, file_name, "''"])
+            csv_writer.writerow([video_id, video_id, index, file_name, "''"])
             csv_file.close()
 
 

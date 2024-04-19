@@ -7,7 +7,7 @@ import torch
 import matplotlib.patches as patches
 import matplotlib.pyplot as plt
 from util.actions import Action
-from pytorchvideo.data import Ava
+from util.modified_ava import Ava
 import pandas as pd
 import json
 from pytorchvideo.data.clip_sampling import ClipInfo, ClipSampler, RandomClipSampler
@@ -87,7 +87,7 @@ def plot_image(frame, boxes):
     return fig
 
 
-def visualize_dataset(dataset, num_images=10):
+def visualize_dataset(dataset, num_images=50):
     num_rows = 5
     num_cols = num_images // num_rows
     fig, axes = plt.subplots(num_rows, num_cols, figsize=(12, 12))
@@ -97,7 +97,6 @@ def visualize_dataset(dataset, num_images=10):
     
     for i in range(num_images):
         sample = next(dataset)
-        print(sample)
         frame = sample['video'][0]  # Access the first video in the batch
         frame = frame[0, :, :].detach().cpu().numpy()
         frame = (frame - frame.min()) / (frame.max() - frame.min())
@@ -156,7 +155,7 @@ def prepare_ava_dataset(phase='train', config=CFG):
     iterable_dataset = Ava(
         frame_paths_file=prepared_frame_list,
         frame_labels_file=frames_label_file_path,
-        clip_sampler = CustomClipSampler(clip_duration=0.5),
+        clip_sampler = make_clip_sampler('random', 10),
         label_map_file=label_map_path,
         transform=transform
     )
@@ -174,16 +173,18 @@ def prepare_ava_dataset(phase='train', config=CFG):
 
     # Shows a picture of the first video in the dataset
     # visualize_ava_dataset(iterable_dataset)
-    visualize_dataset(iterable_dataset)
+    # visualize_dataset(iterable_dataset)
 
     return loader
 
-
-
 class CustomClipSampler(ClipSampler):
     """
-    Randomly samples clip of size clip_duration from the videos.
+    Custom clip sampler that converts the provided clip_index to time values in seconds.
     """
+
+    def __init__(self, clip_duration, fps):
+        self._clip_duration = clip_duration
+        self._fps = fps
 
     def __call__(
         self,
@@ -191,15 +192,37 @@ class CustomClipSampler(ClipSampler):
         video_duration: float,
         annotation: Dict[str, Any],
     ) -> ClipInfo:
+        """
+        Args:
+            last_clip_end_time (float): Not used in this implementation.
+            video_duration (float): Duration of the video in seconds.
+            annotation (Dict[str, Any]): A dictionary containing the clip_index and other
+                annotation information.
 
-        max_possible_clip_start = max(video_duration - self._clip_duration, 0)
-        clip_start_sec = Fraction(random.uniform(0, max_possible_clip_start))
+        Returns:
+            ClipInfo: A named tuple containing the information about the sampled clip.
+        """
+        clip_index = annotation.get("clip_index", None)
+        if clip_index is None:
+            raise ValueError("clip_index not found in the annotation dictionary.")
 
-        clip_start_sec = float(clip_start_sec)
-        clip_end_sec = float(clip_start_sec + self._clip_duration)
+        # Convert clip_index to time in seconds based on the frame rate
+        clip_time_sec = clip_index / self._fps
+
+        # Assuming clip_index represents the center of the clip
+        clip_start_sec = clip_time_sec - self._clip_duration / (2 * self._fps)
+        clip_end_sec = clip_time_sec + self._clip_duration / (2 * self._fps)
+
+        # Ensure clip boundaries are within the video duration
+        clip_start_sec = max(clip_start_sec, 0)
+        clip_end_sec = min(clip_end_sec, video_duration)
 
         return ClipInfo(
-            clip_start_sec, clip_end_sec, 0, 0, True
+            clip_start_sec,
+            clip_end_sec,
+            clip_index,
+            0,  # aug_index
+            True,  # is_last_clip
         )
 
 

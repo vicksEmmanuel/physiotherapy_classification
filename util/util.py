@@ -29,43 +29,12 @@ from pytorchvideo.transforms import (
     UniformCropVideo
 ) 
 
-
 import cv2
 from util.PackPathwayTransform import PackPathway
 from util.config import *
 from util.action_dataset import ActionDataset
 
 
-
-def get_new_transformer(phase):
-    side_size = 256
-    mean = [0.45, 0.45, 0.45]
-    std = [0.225, 0.225, 0.225]
-    crop_size = 256
-    num_frames = 32
-    sampling_rate = 2
-    frames_per_second = 30
-    slowfast_alpha = 4
-    num_clips = 10
-    num_crops = 3
-
-    transform =  ApplyTransformToKey(
-        key="video",
-        transform=Compose(
-            [
-                UniformTemporalSubsample(num_frames),
-                Lambda(lambda x: x/255.0),
-                NormalizeVideo(mean, std),
-                ShortSideScale(
-                    size=side_size
-                ),
-                CenterCropVideo(crop_size),
-                PackPathway()
-            ]
-        ),
-    )
-
-    return transform
 
 def single_transformer():
     side_size = 256
@@ -85,17 +54,6 @@ def single_transformer():
                 PackPathway()
             ]
         )
-
-def preprocess_transformer(roi):
-    """
-    Preprocess the ROI for action recognition model input.
-    """
-    transform = Compose([
-        Resize((256, 256)),
-        ToTensor(),
-        Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
-    ])
-    return transform(roi).unsqueeze(0)  # Add batch dimension
 
 def ava_inference_transform(
     clip,
@@ -150,6 +108,9 @@ def ava_inference_transform(
             ).long(),
         )
         clip = [slow_pathway, fast_pathway]
+
+    
+    print(f"Clip {clip}")
 
     return clip, torch.from_numpy(boxes), ori_boxes
 
@@ -233,56 +194,5 @@ def ava_inference_transform2(sample_dict, num_frames=4, slow_fast_alpha=None, cr
     if len(boxes) > 0:
         transformed_sample_dict["boxes"] = torch.from_numpy(boxes_with_labels).float()
     transformed_sample_dict["ori_boxes"] = torch.from_numpy(boxes).float()
-
-    print(transformed_sample_dict)
-
+    
     return transformed_sample_dict
-
-
-def get_transformer(phase):
-    valid_trans = A.Compose([
-        A.Resize(height=CFG.height, width=CFG.width, interpolation=cv2.INTER_LINEAR), 
-        A.Normalize(
-            mean=[0.485, 0.456, 0.406],
-            std=[0.229, 0.224, 0.225],
-        ),
-        ToTensorV2(p=1.0)
-    ])
-
-    return valid_trans
-
-def get_loader(batch_size=4, num_workers=8, phase='train'):
-    dataset = ActionDataset(
-        transforms=get_new_transformer(phase=phase),
-        num_frames=CFG.num_frames
-    )
-
-    # Calculate split sizes
-    total_size = len(dataset)
-    test_size = int(0.1 * total_size)
-    val_size = int(0.1 * total_size)
-    train_size = total_size - test_size - val_size
-
-    # Split dataset into training, validation, and test sets
-    train_dataset, test_dataset, val_dataset = random_split(dataset, [train_size, test_size, val_size])
-
-    # Select the appropriate dataset for the phase
-    if phase == 'train':
-        selected_dataset = train_dataset
-        shuffle = True  # Typically you shuffle the training dataset
-    elif phase == 'test':
-        selected_dataset = test_dataset
-        shuffle = False  # No need to shuffle the test dataset
-    else:  # 'val' or any other phase defaults to validation
-        selected_dataset = val_dataset
-        shuffle = False  # No need to shuffle the validation dataset
-
-    # Create the DataLoader for the selected dataset
-    loader = DataLoader(
-        selected_dataset, 
-        batch_size=batch_size,
-        num_workers=num_workers,
-        shuffle=shuffle
-    )
-
-    return loader

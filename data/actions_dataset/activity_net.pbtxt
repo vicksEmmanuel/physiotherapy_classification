@@ -47,78 +47,94 @@ item {
   id: 11
 }
 item {
-  name: "cervical flexion"
+  name: "shoulder examination"
   id: 12
 }
 item {
-  name: "lumbar flexion"
+  name: "cervical flexion"
   id: 13
 }
 item {
-  name: "lumbar extension"
+  name: "lumbar flexion"
   id: 14
 }
 item {
-  name: "posterior spine examination"
+  name: "lumbar extension"
   id: 15
 }
 item {
-  name: "throracic rotation"
+  name: "posterior spine examination"
   id: 16
 }
 item {
-  name: "use sanitizer"
+  name: "throracic rotation"
   id: 17
 }
 item {
-  name: "look at the patient"
+  name: "use sanitizer"
   id: 18
 }
 item {
-  name: "speaking to the patient"
+  name: "look at the patient"
   id: 19
 }
 item {
-  name: "demonstrating to the patient"
+  name: "speaking to the patient"
   id: 20
 }
 item {
-  name: "patient standing up"
+  name: "demonstrating to the patient"
   id: 21
 }
 item {
-  name: "patient sitting down"
+  name: "patient standing up"
   id: 22
 }
 item {
-  name: "patient lying down"
+  name: "patient sitting down"
   id: 23
 }
 item {
-  name: "patient taking off clothes"
+  name: "patient lying down"
   id: 24
 }
 item {
-  name: "walking towards the back of the patient"
+  name: "patient examining his own knee"
   id: 25
 }
 item {
-  name: "accessing the back of the patient"
+  name: "foot examination"
   id: 26
 }
 item {
-  name: "hands examination"
+  name: "patient taking off clothes"
   id: 27
 }
 item {
-  name: "schrober examination"
+  name: "walking"
   id: 28
 }
 item {
-  name: "Touching Stomach"
+  name: "walking towards the back of the patient"
   id: 29
 }
 item {
-  name: "touching the back"
+  name: "accessing the back of the patient"
   id: 30
+}
+item {
+  name: "hands examination"
+  id: 31
+}
+item {
+  name: "schrober examination"
+  id: 32
+}
+item {
+  name: "Touching Stomach"
+  id: 33
+}
+item {
+  name: "touching the back"
+  id: 34
 }
