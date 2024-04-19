@@ -154,12 +154,7 @@ def prepare_ava_dataset(phase='train', config=CFG):
     iterable_dataset = Ava(
         frame_paths_file=prepared_frame_list,
         frame_labels_file=frames_label_file_path,
-        clip_sampler = make_clip_sampler(
-            'constant_clips_per_video',
-            5.0,  # Duration of each clip in seconds
-            5,  # Number of clips to sample from each video
-            1     # Number of augmentations to apply to each clip
-        ),
+        clip_sampler = make_clip_sampler('random', 20),
         label_map_file=label_map_path,
         transform=transform
     )
