@@ -79,8 +79,13 @@ def train(config):
     )
 
     last_checkpoint = "checkpoints/last.ckpt"
-    trainer.fit(model, loaders['train'], loaders['val'], ckpt_path=last_checkpoint)
-    trainer.test(model, loaders['test'])
+
+    if os.path.exists(last_checkpoint):
+        trainer.fit(model, loaders['train'], loaders['val'], ckpt_path=last_checkpoint)
+        trainer.test(model, loaders['test'])
+    else:
+        trainer.fit(model, loaders['train'], loaders['val'])
+        trainer.test(model, loaders['test'])
 
 train(CFG)
     
