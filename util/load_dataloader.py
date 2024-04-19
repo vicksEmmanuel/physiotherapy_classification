@@ -155,7 +155,7 @@ def prepare_ava_dataset(phase='train', config=CFG):
     iterable_dataset = Ava(
         frame_paths_file=prepared_frame_list,
         frame_labels_file=frames_label_file_path,
-        clip_sampler=CustomClipSampler(clip_duration=2),
+        clip_sampler=make_clip_sampler('random',2),
         label_map_file=label_map_path,
         transform=transform
     )

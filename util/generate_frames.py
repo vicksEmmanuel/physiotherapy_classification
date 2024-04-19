@@ -39,117 +39,117 @@ def generate_frames(data_path, dataset_type):
         objects = data['objects'] # contains a list of objects in the video such as id, classTitle
         
 
-        # for frame in data['frames']:
-        #     frame_index = frame['index']
-        #     figures = frame['figures']
+        for frame in data['frames']:
+            frame_index = frame['index']
+            figures = frame['figures']
             
-        #     # Process the figures in the frame
-        #     for figure in figures:
-        #         figure_id = figure['id']
-        #         class_id = figure['classId']
-        #         object_id = figure['objectId']
-        #         description = figure['description']
-        #         geometry_type = figure['geometryType']
-        #         labeler_login = figure['labelerLogin']
-        #         created_at = figure['createdAt']
-        #         updated_at = figure['updatedAt']
-        #         geometry = figure['geometry']
+            # Process the figures in the frame
+            for figure in figures:
+                figure_id = figure['id']
+                class_id = figure['classId']
+                object_id = figure['objectId']
+                description = figure['description']
+                geometry_type = figure['geometryType']
+                labeler_login = figure['labelerLogin']
+                created_at = figure['createdAt']
+                updated_at = figure['updatedAt']
+                geometry = figure['geometry']
                 
-        #         # Process the geometry points
-        #         exterior_points = geometry['points']['exterior']
-        #         interior_points = geometry['points']['interior']
+                # Process the geometry points
+                exterior_points = geometry['points']['exterior']
+                interior_points = geometry['points']['interior']
 
-        #         class_title = None
+                class_title = None
 
-        #         # Find object_id in objects
-        #         for obj in objects:
-        #             if obj['id'] == object_id:
-        #                 class_title = obj['classTitle']
-        #                 break
+                # Find object_id in objects
+                for obj in objects:
+                    if obj['id'] == object_id:
+                        class_title = obj['classTitle']
+                        break
 
-        #         class_id = None
+                class_id = None
 
-        #         for index in range(0, len(Action().action)):
-        #             if Action().action[index] == class_title:
-        #                 class_id = index
-        #                 break
+                for index in range(0, len(Action().action)):
+                    if Action().action[index] == class_title:
+                        class_id = index
+                        break
                 
-        #         csv_file = open(annotation_save_path, 'a', newline='')
-        #         csv_writer = csv.writer(csv_file)
+                csv_file = open(annotation_save_path, 'a', newline='')
+                csv_writer = csv.writer(csv_file)
 
-        #         padding = len(str(frames_count))
-        #         frame_number = str(frame_index).zfill(padding)
+                padding = len(str(frames_count))
+                frame_number = str(frame_index).zfill(padding)
 
 
-        #         width_scale = 256 / image_width
-        #         height_scale = 256 / image_height
+                width_scale = 256 / image_width
+                height_scale = 256 / image_height
 
 
               
 
-        #         # Function to transform a bounding box
-        #         # def transform_bounding_box(box, width_scale, height_scale):
-        #         #     (x1, y1), (x2, y2) = box['exterior']
-        #         #     new_x1 = x1 * width_scale
-        #         #     new_y1 = y1 * height_scale
-        #         #     new_x2 = x2 * width_scale
-        #         #     new_y2 = y2 * height_scale
-        #         #     return [(new_x1, new_y1), (new_x2, new_y2)]
+                # Function to transform a bounding box
+                # def transform_bounding_box(box, width_scale, height_scale):
+                #     (x1, y1), (x2, y2) = box['exterior']
+                #     new_x1 = x1 * width_scale
+                #     new_y1 = y1 * height_scale
+                #     new_x2 = x2 * width_scale
+                #     new_y2 = y2 * height_scale
+                #     return [(new_x1, new_y1), (new_x2, new_y2)]
                 
 
-        #         # figure['geometry']['points']['exterior'] = transform_bounding_box(
-        #         #     figure['geometry']['points'],
-        #         #     width_scale,
-        #         #     height_scale
-        #         # )
+                # figure['geometry']['points']['exterior'] = transform_bounding_box(
+                #     figure['geometry']['points'],
+                #     width_scale,
+                #     height_scale
+                # )
 
-        #         # x1, y1 = figure['geometry']['points']['exterior'][0]
-        #         # x2, y2 = figure['geometry']['points']['exterior'][1]
+                # x1, y1 = figure['geometry']['points']['exterior'][0]
+                # x2, y2 = figure['geometry']['points']['exterior'][1]
 
 
-        #         # normalized_top_left = normalize_coordinates((x1, y1), 256, 256)
-        #         # normalized_bottom_right = normalize_coordinates((x2, y2), 256, 256)
+                # normalized_top_left = normalize_coordinates((x1, y1), 256, 256)
+                # normalized_bottom_right = normalize_coordinates((x2, y2), 256, 256)
 
-        #         # print(f"Normalized top left: {normalized_top_left} Normalized bottom right: {normalized_bottom_right}")
+                # print(f"Normalized top left: {normalized_top_left} Normalized bottom right: {normalized_bottom_right}")
                 
-        #         # x1, y1 = normalized_top_left
-        #         # x2, y2 = normalized_bottom_right
+                # x1, y1 = normalized_top_left
+                # x2, y2 = normalized_bottom_right
 
 
 
-        #         (x1, y1), (x2, y2) = figure['geometry']['points']['exterior']
+                (x1, y1), (x2, y2) = figure['geometry']['points']['exterior']
                 
-        #         # Calculate the center of the bounding box
-        #         x_center = (x1 + x2) / 2.0
-        #         y_center = (y1 + y2) / 2.0
+                # Calculate the center of the bounding box
+                x_center = (x1 + x2) / 2.0
+                y_center = (y1 + y2) / 2.0
                 
-        #         # Calculate the width and height of the bounding box
-        #         width = x2 - x1
-        #         height = y2 - y1
+                # Calculate the width and height of the bounding box
+                width = x2 - x1
+                height = y2 - y1
                 
-        #         # Normalize the center coordinates and dimensions
-        #         normalized_x_center = x_center / image_width
-        #         normalized_y_center = y_center / image_height
-        #         normalized_width = width / image_width
-        #         normalized_height = height / image_height
+                # Normalize the center coordinates and dimensions
+                normalized_x_center = x_center / image_width
+                normalized_y_center = y_center / image_height
+                normalized_width = width / image_width
+                normalized_height = height / image_height
 
-        #         x1 = float(f"{normalized_x_center:.4f}")
-        #         y1 = float(f"{normalized_y_center:.4f}")
-        #         x2 = float(f"{normalized_width:.4f}")
-        #         y2 = float(f"{normalized_height:.4f}")
-
-
-        #         print(f"{x1} {y1} {x2} {y2} =====>")
+                x1 = float(f"{normalized_x_center:.4f}")
+                y1 = float(f"{normalized_y_center:.4f}")
+                x2 = float(f"{normalized_width:.4f}")
+                y2 = float(f"{normalized_height:.4f}")
 
 
-        #         csv_writer.writerow([
-        #             video_id, frame_number,
-        #             x1, y1, x2, y2,
-        #             class_id,
-        #             65
-        #         ])
+                print(f"{x1} {y1} {x2} {y2} =====>")
 
-        #         csv_file.close()
+
+                csv_writer.writerow([
+                    video_id, frame_number,
+                    x1, y1, x2, y2,
+                    class_id,
+                    65
+                ])
+
+                csv_file.close()
 
         print(frames_count)
 
@@ -171,7 +171,7 @@ def clear_folders(path):
     os.makedirs(frames_dataset_folder)
 
 def process_data():
-    # clear_folders("data/frames_dataset/annotations")
+    clear_folders("data/frames_dataset/annotations")
     clear_folders("data/frames_dataset/frame_lists")
 
     generate_frames("data/video_actions_annotated_data/train", 'train')
