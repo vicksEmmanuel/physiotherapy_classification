@@ -234,6 +234,8 @@ def ava_inference_transform2(sample_dict, num_frames=4, slow_fast_alpha=None, cr
         transformed_sample_dict["boxes"] = torch.from_numpy(boxes_with_labels).float()
     transformed_sample_dict["ori_boxes"] = torch.from_numpy(boxes).float()
 
+    print(transformed_sample_dict)
+
     return transformed_sample_dict
 
 
