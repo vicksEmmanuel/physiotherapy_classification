@@ -1,4 +1,6 @@
+from fractions import Fraction
 import random
+from typing import Any, Dict
 from util.util import ava_inference_transform2
 from torch.utils.data import IterableDataset
 import torch
@@ -8,7 +10,7 @@ from util.actions import Action
 from pytorchvideo.data import Ava
 import pandas as pd
 import json
-from pytorchvideo.data.clip_sampling import ClipInfo, RandomClipSampler
+from pytorchvideo.data.clip_sampling import ClipInfo, ClipSampler, RandomClipSampler
 from pytorchvideo.data.clip_sampling import make_clip_sampler
 import numpy as np
 from torch.utils.data import DataLoader,random_split
@@ -154,7 +156,7 @@ def prepare_ava_dataset(phase='train', config=CFG):
     iterable_dataset = Ava(
         frame_paths_file=prepared_frame_list,
         frame_labels_file=frames_label_file_path,
-        clip_sampler = RandomClipSampler(clip_duration=0.5),
+        clip_sampler = CustomClipSampler(clip_duration=0.5),
         label_map_file=label_map_path,
         transform=transform
     )
@@ -176,21 +178,29 @@ def prepare_ava_dataset(phase='train', config=CFG):
     return loader
 
 
-class CustomClipSampler(RandomClipSampler):
-    def __call__(self, last_clip_end_time, video_duration, annotation):
 
-        print (f"clip_duration: {self._clip_duration} , video_duration: {video_duration}")
+class CustomClipSampler(ClipSampler):
+    """
+    Randomly samples clip of size clip_duration from the videos.
+    """
+
+    def __call__(
+        self,
+        last_clip_end_time: float,
+        video_duration: float,
+        annotation: Dict[str, Any],
+    ) -> ClipInfo:
 
         max_possible_clip_start = max(video_duration - self._clip_duration, 0)
-        clip_start_sec = 0
-        if max_possible_clip_start > 0:
-            clip_start_sec = random.uniform(0, max_possible_clip_start)
+        clip_start_sec = Fraction(random.uniform(0, max_possible_clip_start))
 
-        clip_end_sec = min(clip_start_sec + self._clip_duration, video_duration)
+        clip_start_sec = float(clip_start_sec)
+        clip_end_sec = float(clip_start_sec + self._clip_duration)
 
-        print(f"clip_start: {clip_start_sec} , clip_end: {clip_end_sec}")
+        return ClipInfo(
+            clip_start_sec, clip_end_sec, 0, 0, True
+        )
 
-        return  ClipInfo(clip_start_sec, clip_end_sec, 0, 0, True)
 
 class AvaDataset(IterableDataset):
     def __init__(self, iterable_dataset):
