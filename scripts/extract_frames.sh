@@ -1,4 +1,4 @@
-IN_DATA_DIR="data/prepared_ava_dataset"
+IN_DATA_DIR="data/other"
 OUT_DATA_DIR="data/frames"
 
 if [[ ! -d "${OUT_DATA_DIR}" ]]; then
