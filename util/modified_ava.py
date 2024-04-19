@@ -303,9 +303,13 @@ class TimeStampClipSampler(ClipSampler):
         # Convert clip_index to time in seconds based on the frame rate
         center_frame_sec = clip_index / self._fps
 
+        # Calculate the maximum possible clip start and end times
+        max_clip_start_sec = max(center_frame_sec - self.clip_sampler._clip_duration / 2, 0)
+        max_clip_end_sec = min(center_frame_sec + self.clip_sampler._clip_duration / 2, video_duration)
+
         # Ensure the clip boundaries are within the video duration
-        clip_start_sec = max(center_frame_sec - self.clip_sampler._clip_duration / (2 * self._fps), 0)
-        clip_end_sec = min(clip_start_sec + self.clip_sampler._clip_duration / self._fps, video_duration)
+        clip_start_sec = max(max_clip_start_sec, 0)
+        clip_end_sec = min(max_clip_end_sec, video_duration)
 
         return ClipInfo(
             clip_start_sec,
