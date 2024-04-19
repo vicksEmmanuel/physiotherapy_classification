@@ -311,6 +311,8 @@ class TimeStampClipSampler(ClipSampler):
         clip_start_sec = max(max_clip_start_sec, 0)
         clip_end_sec = min(max_clip_end_sec, video_duration)
 
+        print(f"clip_start_sec: {clip_start_sec}, clip_end_sec: {clip_end_sec}, clip_index: {clip_index}")
+
         return ClipInfo(
             clip_start_sec,
             clip_end_sec,
