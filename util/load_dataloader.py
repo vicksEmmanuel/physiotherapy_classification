@@ -180,12 +180,16 @@ def prepare_ava_dataset(phase='train', config=CFG):
 class CustomClipSampler(RandomClipSampler):
     def __call__(self, last_clip_end_time, video_duration, annotation):
 
+        print (f"clip_duration: {self._clip_duration} , video_duration: {video_duration}")
+
         max_possible_clip_start = max(video_duration - self._clip_duration, 0)
         clip_start_sec = 0
         if max_possible_clip_start > 0:
             clip_start_sec = random.uniform(0, max_possible_clip_start)
 
         clip_end_sec = min(clip_start_sec + self._clip_duration, video_duration)
+
+        print(f"clip_start: {clip_start_sec} , clip_end: {clip_end_sec}")
 
         return  ClipInfo(clip_start_sec, clip_end_sec, 0, 0, True)
 
