@@ -8,7 +8,6 @@ from util.actions import Action
 from pytorchvideo.data import Ava
 import pandas as pd
 import json
-from pytorchvideo.data import Ava
 from pytorchvideo.data.clip_sampling import ClipInfo, RandomClipSampler
 from pytorchvideo.data.clip_sampling import make_clip_sampler
 import numpy as np
@@ -155,7 +154,12 @@ def prepare_ava_dataset(phase='train', config=CFG):
     iterable_dataset = Ava(
         frame_paths_file=prepared_frame_list,
         frame_labels_file=frames_label_file_path,
-        clip_sampler=make_clip_sampler('random',5.0),
+        clip_sampler = make_clip_sampler(
+            'constant_clips_per_video',
+            clip_duration=5.0,  # Duration of each clip in seconds
+            clips_per_video=5,  # Number of clips to sample from each video
+            augs_per_clip=1     # Number of augmentations to apply to each clip
+        ),
         label_map_file=label_map_path,
         transform=transform
     )
