@@ -156,9 +156,9 @@ def prepare_ava_dataset(phase='train', config=CFG):
         frame_labels_file=frames_label_file_path,
         clip_sampler = make_clip_sampler(
             'constant_clips_per_video',
-            clip_duration=5.0,  # Duration of each clip in seconds
-            clips_per_video=5,  # Number of clips to sample from each video
-            augs_per_clip=1     # Number of augmentations to apply to each clip
+            5.0,  # Duration of each clip in seconds
+            5,  # Number of clips to sample from each video
+            1     # Number of augmentations to apply to each clip
         ),
         label_map_file=label_map_path,
         transform=transform
