@@ -10,8 +10,10 @@ import torch
 import torch.nn as nn
 from pytorchvideo.models.resnet import create_resnet_with_roi_head
 
+from util.actions import Action
+
 class CustomSlowR50Detection(nn.Module):
-    def __init__(self, pretrained=True, num_classes=80):
+    def __init__(self, pretrained=True, num_classes=len(Action().action)):
         super().__init__()
         self.base_model = slow_r50_detection(pretrained=pretrained)
         detection_head = self.base_model.detection_head
@@ -24,11 +26,11 @@ class CustomSlowR50Detection(nn.Module):
 
 
 class SlowFastAva(LightningModule):
-    def __init__(self, drop_prob=0.5, num_frames=16, num_classes=5):
+    def __init__(self, drop_prob=0.5, num_frames=4, num_classes=len(Action().action)):
         super().__init__()
 
         self.drop_prob = drop_prob
-        self.num_classes = 80 # num_classes
+        self.num_classes = len(Action().action)
         self.num_frames = num_frames
         self.save_hyperparameters()
 
@@ -146,7 +148,7 @@ class SlowFastAva(LightningModule):
         self.log_dict(metrics, on_step=False, on_epoch=True)
         return metrics
 
-    def _shared_label_process(self, labels_list, num_classes=80):
+    def _shared_label_process(self, labels_list, num_classes=len(Action().action)):
         labels = torch.zeros((len(labels_list), num_classes), dtype=torch.float, device=self.device)
     
         for idx, class_indices in enumerate(labels_list):
