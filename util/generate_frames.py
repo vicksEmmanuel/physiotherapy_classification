@@ -156,7 +156,7 @@ def generate_frames(data_path, dataset_type):
             csv_writer = csv.writer(csv_file, delimiter=' ')
             padding = len(str(frames_count))
             frame_number = str(frame_index).zfill(padding)
-            file_name  = f"data/frames/{video_id}/{video_id}_{frame_number}.jpg"
+            file_name  = f"data/frames/{video_id}/{video_id}_00{frame_number}.jpg"
             csv_writer.writerow([video_id, video_id, frame_index, file_name, "''"])
             csv_file.close()
 
