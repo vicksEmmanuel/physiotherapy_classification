@@ -1,3 +1,4 @@
 checkpoints/** filter=lfs diff=lfs merge=lfs -text
+data/frames/** filter=lfs diff=lfs merge=lfs -text
 *.ckpt filter=lfs diff=lfs merge=lfs -text
 *.csv filter=lfs diff=lfs merge=lfs -text

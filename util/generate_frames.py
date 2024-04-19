@@ -169,7 +169,7 @@ def clear_folders(path):
     os.makedirs(frames_dataset_folder)
 
 def process_data():
-    # clear_folders("data/frames_dataset/annotations")
+    clear_folders("data/frames_dataset/annotations")
     clear_folders("data/frames_dataset/frame_lists")
 
     generate_frames("data/video_actions_annotated_data/train", 'train')
