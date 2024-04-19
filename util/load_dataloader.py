@@ -1,3 +1,4 @@
+import random
 from util.util import ava_inference_transform2
 from torch.utils.data import IterableDataset
 import torch
@@ -8,6 +9,7 @@ from pytorchvideo.data import Ava
 import pandas as pd
 import json
 from pytorchvideo.data import Ava
+from pytorchvideo.data.clip_sampling import ClipInfo, RandomClipSampler
 from pytorchvideo.data.clip_sampling import make_clip_sampler
 import numpy as np
 from torch.utils.data import DataLoader,random_split
@@ -153,7 +155,7 @@ def prepare_ava_dataset(phase='train', config=CFG):
     iterable_dataset = Ava(
         frame_paths_file=prepared_frame_list,
         frame_labels_file=frames_label_file_path,
-        clip_sampler=make_clip_sampler("random", 2),
+        clip_sampler=CustomClipSampler(clip_duration=2),
         label_map_file=label_map_path,
         transform=transform
     )
@@ -173,6 +175,17 @@ def prepare_ava_dataset(phase='train', config=CFG):
     # visualize_dataset(iterable_dataset)
 
     return loader
+
+
+class CustomClipSampler(RandomClipSampler):
+    def __call__(self, last_clip_end_time, video_duration, annotation):
+        max_possible_clip_start = max(video_duration - self._clip_duration, 0)
+        clip_start_sec = 0
+        if max_possible_clip_start > 0:
+            clip_start_sec = random.uniform(0, max_possible_clip_start)
+
+        clip_end_sec = min(clip_start_sec + self._clip_duration, video_duration)
+        return  ClipInfo(clip_start_sec, clip_end_sec, 0, 0, True)
 
 class AvaDataset(IterableDataset):
     def __init__(self, iterable_dataset):
