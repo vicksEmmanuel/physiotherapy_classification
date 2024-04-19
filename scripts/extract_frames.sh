@@ -1,4 +1,4 @@
-IN_DATA_DIR="data/other"
+IN_DATA_DIR="data/prepared_video_dataset"
 OUT_DATA_DIR="data/frames"
 
 if [[ ! -d "${OUT_DATA_DIR}" ]]; then
