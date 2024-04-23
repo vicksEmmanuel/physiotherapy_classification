@@ -63,6 +63,12 @@ video_visualizer = VideoVisualizer(
     thres=0.4
 )
 
+cfg = get_cfg()
+cfg.merge_from_file(model_zoo.get_config_file("COCO-Detection/faster_rcnn_R_50_FPN_3x.yaml"))
+cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.55  # set threshold for this model
+cfg.MODEL.WEIGHTS = model_zoo.get_checkpoint_url("COCO-Detection/faster_rcnn_R_50_FPN_3x.yaml")
+predictor = DefaultPredictor(cfg)
+
 
 def get_single_bboxes(inp_imgs):
     _, height, width = inp_imgs.shape[1:]
@@ -92,6 +98,16 @@ def get_single_bboxes(inp_imgs):
     y2 = float(f"{normalized_height:.4f}")
     predicted_boxes = torch.tensor([[x1, y1, x2, y2]])
     return predicted_boxes
+
+
+def get_person_bboxes(inp_img, predictor):
+    predictions = predictor(inp_img.cpu().detach().numpy())['instances'].to('cpu')
+    boxes = predictions.pred_boxes if predictions.has("pred_boxes") else None
+    scores = predictions.scores if predictions.has("scores") else None
+    classes = np.array(predictions.pred_classes.tolist() if predictions.has("pred_classes") else None)
+    predicted_boxes = boxes[np.logical_and(classes==0, scores>0.75 )].tensor.cpu() # only person
+    return predicted_boxes
+
 
 
 def plot_bounding_boxes(inp_imgs, inp_img, predicted_boxes):
@@ -140,8 +156,10 @@ def generate_actions_from_video(video_path):
         inp_img = inp_img.permute(1,2,0)
 
         # Predicted boxes are of the form List[(x_1, y_1, x_2, y_2)]
-        predicted_boxes = get_single_bboxes(inp_imgs)
+        # predicted_boxes = get_single_bboxes(inp_imgs)
         # plot_bounding_boxes(inp_imgs, inp_img, predicted_boxes)
+
+        predicted_boxes = get_person_bboxes(inp_img, predictor)
 
         
         if len(predicted_boxes) == 0:
