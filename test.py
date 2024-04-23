@@ -30,7 +30,7 @@ from util.video_visualizer import VideoVisualizer
 import pytorchvideo.models.slowfast as SlowFastModel
 import cv2
 from model.slowfast_ava_model import SlowFastAva  # Ensure this import matches your project structure
-from util import single_transformer,ava_inference_transform
+from util.util import single_transformer,ava_inference_transform
 from pytorchvideo.models.resnet import create_resnet, create_resnet_with_roi_head
 from pytorchvideo.data.ava import AvaLabeledVideoFramePaths
 
@@ -214,9 +214,6 @@ def append_to_actions_list(preds, start_sec, end_sec, confidence_threshold=0.5, 
     predicted_actions = preds.argmax(dim=1).tolist()
     predicted_probs = preds.max(dim=1).values.tolist()
 
-<<<<<<< HEAD
-all_actions = generate_actions_from_video(video_path)
-=======
     # Filter the actions based on the confidence threshold
     filtered_actions = [actions[action_id] for action_id, prob in zip(predicted_actions, predicted_probs) if prob >= confidence_threshold]
     print(f"Predicted actions for second {start_sec} - {end_sec}: {filtered_actions}")
@@ -231,4 +228,3 @@ all_actions = generate_actions_from_video(video_path)
 all_actions = generate_actions_from_video(video_path)
 
 print("All actions: ", all_actions)
->>>>>>> 1e79ee081340f9cebd4c4c3d4aec352cb858d9f3
