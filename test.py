@@ -53,16 +53,15 @@ label_map, allowed_class_ids = AvaLabeledVideoFramePaths.read_label_map('data/ac
 print("Label map: ", label_map)
 print("Allowed class ids: ", allowed_class_ids)
 
+actions_per_second = []
+
 video_visualizer = VideoVisualizer(
     num_classes=len(actions) + 1,
     class_names_path='data/actions_dataset/activity_net.pbtxt',
     top_k=3, 
     mode="thres",
-    thres=0.5
+    thres=0.4
 )
-
-print(f"Video action loaded. {actions}")
-
 
 
 def get_single_bboxes(inp_imgs):
@@ -121,7 +120,7 @@ def plot_bounding_boxes(inp_imgs, inp_img, predicted_boxes):
 
 def generate_actions_from_video(video_path):
     gif_imgs = []
-    confidence_threshold = 0.5
+    confidence_threshold = 0.3
     actions_per_second = []
     total_duration = int(encoded_vid.duration)  # Total duration in seconds
     audio_timestamps =  get_audio(video_path, total_duration=total_duration)
@@ -153,14 +152,8 @@ def generate_actions_from_video(video_path):
 
         inputs, inp_boxes, _ = ava_inference_transform(inp_imgs, predicted_boxes.numpy())
 
-        print(f"Inputs shape: {inputs.shape}")
-        print(f"Bounding boxes shape: {inp_boxes.shape}")
-
         inp_boxes = torch.cat([torch.zeros(inp_boxes.shape[0],1), inp_boxes], dim=1)
         inputs = inputs.unsqueeze(0)
-
-        print(f"Inputs shape: {inputs.shape}")
-        print(f"Bounding boxes shape: {inp_boxes.shape}")
 
         # Generate actions predictions for the bounding boxes in the clip.
         # The model here takes in the pre-processed video clip and the detected bounding boxes.
@@ -172,7 +165,7 @@ def generate_actions_from_video(video_path):
         # The model is trained on AVA and AVA labels are 1 indexed so, prepend 0 to convert to 0 index.
         preds = torch.cat([torch.zeros(preds.shape[0],1), preds], dim=1)
 
-        print(f"Predictions for second {start_sec} - {end_sec}: {preds}")
+        append_to_actions_list(preds, start_sec, end_sec, confidence_threshold, audio_timestamps[i], actions_per_second)
 
         # Plot predictions on the video and save for later visualization.
         inp_imgs = inp_imgs.permute(1,2,3,0)
@@ -195,9 +188,25 @@ def generate_actions_from_video(video_path):
     video.release()
 
     print('Predictions are saved to the video file: ', vide_save_path)
-
     return actions_per_second
 
 
+def append_to_actions_list(preds, start_sec, end_sec, confidence_threshold=0.5, audio_timestamps=None, actions_per_sec=[]):
+    # Get the predicted actions and their probabilities
+    predicted_actions = preds.argmax(dim=1).tolist()
+    predicted_probs = preds.max(dim=1).values.tolist()
+
+    # Filter the actions based on the confidence threshold
+    filtered_actions = [actions[action_id] for action_id, prob in zip(predicted_actions, predicted_probs) if prob >= confidence_threshold]
+    print(f"Predicted actions for second {start_sec} - {end_sec}: {filtered_actions}")
+    
+    actions_per_sec.append({
+        "start": start_sec,
+        "end": end_sec,
+        "actions": filtered_actions,
+        "audio": audio_timestamps
+    })
 
 all_actions = generate_actions_from_video(video_path)
+
+print("All actions: ", all_actions)
