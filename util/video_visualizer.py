@@ -28,7 +28,7 @@ def get_class_names(pbtxt_path, subset_path=None, class_parent=None):
         with open(subset_path, 'r') as f:
             subset = f.read().strip().split('\n')
             subset_ids = [idx for idx, name in enumerate(class_names, start=1) if name in subset]
-
+            
     return class_names, class_parent, subset_ids
 
 
@@ -472,10 +472,9 @@ class VideoVisualizer:
                 top_classes.append(top_class)
 
 
-        print("top_scores: ", top_scores)
-        print("top_classes: ", top_classes)
-        print("self.class_names: ", self.class_names)
-        print("ground_truth: ", ground_truth)
+        # print("top_scores: ", top_scores)
+        # print("top_classes: ", top_classes)
+        # print("ground_truth: ", ground_truth)
 
         # Create labels top k predicted classes with their scores.
         text_labels = []

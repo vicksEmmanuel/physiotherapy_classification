@@ -1,0 +1,90 @@
+{
+	"summary": "List of the actions and discussions during a student analysis",
+	"good": [
+		{
+			"actions": [
+				"use sanitizer",
+				"demonstrate to the patient",
+				"pelvis check",
+				"knee examination"
+			],
+			"discussions": [
+				"He said this and that abc",
+				"he said that and this dbc ddd"
+			],
+			"actions_and_discussions": [
+				{
+					"action": "use sanitizer",
+					"discussion": "He said this and that abab"
+				},
+				{
+					"action": "demonstrate to the patient",
+					"discussion": "He said that and this annsn"
+				}
+			]
+		},
+		{
+			"actions": [
+				"use sanitizer",
+				"demonstrate to the patient",
+				"pelvis check",
+				"knee examination",
+				"shoulder examination"
+			],
+			"discussions": [
+				"He said this and that abc",
+				"he said that and this dbc ddd"
+			],
+			"actions_and_discussions": [
+				{
+					"action": "use sanitizer",
+					"discussion": "He said this and that abab"
+				},
+
+				{
+					"action": "shoulder examination",
+					"discussion": "He said that and this annsn"
+				},
+				{
+					"action": "demonstrate to the patient",
+					"discussion": "He said that and this annsn"
+				}
+			]
+		}
+	],
+	"brief": [
+		{
+			"actions": ["pelvis check", "knee examination"],
+			"discussions": [
+				"He said this and that xmxmxm",
+				"he said that and this xxjjww"
+			],
+			"actions_and_discussions": [
+				{
+					"action": "use sanitizer",
+					"discussion": "He said this and that lsppw"
+				},
+				{
+					"action": "demonstrate to the patient",
+					"discussion": "He said that and this xxskks"
+				}
+			]
+		}
+	],
+	"average": [
+		{
+			"actions": ["demonstrate to the patient", "knee examination"],
+			"discussions": ["He said this and that", "he said that and this"],
+			"actions_and_discussions": [
+				{
+					"action": "demonstrate to the patient",
+					"discussion": "He said this and that"
+				},
+				{
+					"action": "knee examination",
+					"discussion": "He said that and this"
+				}
+			]
+		}
+	]
+}
