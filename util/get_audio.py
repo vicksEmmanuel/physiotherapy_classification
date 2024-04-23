@@ -3,7 +3,6 @@ from pytorch_lightning.callbacks import ModelCheckpoint
 from pytorch_lightning import Trainer, seed_everything
 from util.action_dataset import ActionDataset
 from util.config import CFG
-from util.util import get_loader, get_transformer,get_new_transformer
 import torch
 from util.load_dataloader import prepare_ava_dataset
 import subprocess
