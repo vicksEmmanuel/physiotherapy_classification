@@ -1,0 +1,122 @@
+{
+	"actions completeness": {
+		"thorough": "somewhat likely",
+		"adequate": "likely",
+		"lacking": "somewhat unlikely"
+	},
+	"discussions quality": {
+		"insightful": "somewhat likely",
+		"relevant": "likely",
+		"off-topic": "somewhat unlikely"
+	},
+	"actions discussion alignment": {
+		"well-aligned": "likely",
+		"somewhat aligned": "somewhat likely",
+		"misaligned": "unlikely"
+	},
+	"domain knowledge": {
+		"advanced": "somewhat likely",
+		"proficient": "likely",
+		"beginner": "somewhat unlikely"
+	},
+	"communication": {
+		"clear": "likely",
+		"adequate": "somewhat likely",
+		"unclear": "somewhat unlikely"
+	},
+	"problem solving": {
+		"innovative": "somewhat likely",
+		"effective": "likely",
+		"ineffective": "somewhat unlikely"
+	},
+	"actions completeness average (average)": {
+		"thorough": "somewhat likely",
+		"adequate": "likely",
+		"lacking": "somewhat unlikely"
+	},
+	"actions discussion alignment average (average)": {
+		"well-aligned": "likely",
+		"somewhat aligned": "somewhat likely",
+		"misaligned": "unlikely"
+	},
+	"communication average (average)": {
+		"clear": "likely",
+		"adequate": "somewhat likely",
+		"unclear": "somewhat unlikely"
+	},
+	"discussions quality average (average)": {
+		"insightful": "somewhat likely",
+		"relevant": "likely",
+		"off-topic": "somewhat unlikely"
+	},
+	"domain knowledge average (average)": {
+		"advanced": "somewhat likely",
+		"proficient": "likely",
+		"beginner": "somewhat unlikely"
+	},
+	"problem solving average (average)": {
+		"innovative": "somewhat likely",
+		"effective": "likely",
+		"ineffective": "somewhat unlikely"
+	},
+	"actions completeness brief (brief)": {
+		"thorough": "somewhat likely",
+		"adequate": "likely",
+		"lacking": "somewhat unlikely"
+	},
+	"actions discussion alignment brief (brief)": {
+		"well-aligned": "likely",
+		"somewhat aligned": "somewhat likely",
+		"misaligned": "unlikely"
+	},
+	"communication brief (brief)": {
+		"clear": "likely",
+		"adequate": "somewhat likely",
+		"unclear": "somewhat unlikely"
+	},
+	"discussions quality brief (brief)": {
+		"insightful": "somewhat likely",
+		"relevant": "likely",
+		"off-topic": "somewhat unlikely"
+	},
+	"domain knowledge brief (brief)": {
+		"advanced": "somewhat likely",
+		"proficient": "likely",
+		"beginner": "somewhat unlikely"
+	},
+	"problem solving brief (brief)": {
+		"innovative": "somewhat likely",
+		"effective": "likely",
+		"ineffective": "somewhat unlikely"
+	},
+	"actions completeness good (good)": {
+		"thorough": "somewhat likely",
+		"adequate": "likely",
+		"lacking": "somewhat unlikely"
+	},
+	"actions discussion alignment good (good)": {
+		"well-aligned": "likely",
+		"somewhat aligned": "somewhat likely",
+		"misaligned": "unlikely"
+	},
+	"communication good (good)": {
+		"clear": "likely",
+		"adequate": "somewhat likely",
+		"unclear": "somewhat unlikely"
+	},
+	"discussions quality good (good)": {
+		"insightful": "somewhat likely",
+		"relevant": "likely",
+		"off-topic": "somewhat unlikely"
+	},
+	"domain knowledge good (good)": {
+		"advanced": "somewhat likely",
+		"proficient": "likely",
+		"beginner": "somewhat unlikely"
+	},
+	"problem solving good (good)": {
+		"innovative": "somewhat likely",
+		"effective": "likely",
+		"ineffective": "somewhat unlikely"
+	}
+}

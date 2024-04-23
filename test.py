@@ -1,4 +1,4 @@
-from get_audio import get_audio
+from util.get_audio import get_audio
 from PIL import Image, ImageDraw
 import os
 from torchvision.transforms.functional import normalize as normalize_image
@@ -23,7 +23,7 @@ from util.util_2 import  get_video_clip_and_resize, get_video_clip_and_resize3, 
 from pytorchvideo.data.encoded_video import EncodedVideo
 import torch
 from torchvision.transforms import functional as F
-from video_visualizer import VideoVisualizer
+from util.video_visualizer import VideoVisualizer
 import pytorchvideo.models.slowfast as SlowFastModel
 import cv2
 from model.slowfast_ava_model import SlowFastAva  # Ensure this import matches your project structure
