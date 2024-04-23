@@ -27,7 +27,7 @@ from video_visualizer import VideoVisualizer
 import pytorchvideo.models.slowfast as SlowFastModel
 import cv2
 from model.slowfast_ava_model import SlowFastAva  # Ensure this import matches your project structure
-from util.util import single_transformer,ava_inference_transform
+from util import single_transformer,ava_inference_transform
 from pytorchvideo.models.resnet import create_resnet, create_resnet_with_roi_head
 from pytorchvideo.data.ava import AvaLabeledVideoFramePaths
 
