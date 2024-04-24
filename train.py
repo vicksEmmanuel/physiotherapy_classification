@@ -2,13 +2,9 @@ from pytorch_lightning.callbacks import ModelCheckpoint, RichProgressBar
 from pytorch_lightning import Trainer, seed_everything
 from util.action_dataset import ActionDataset
 from util.config import CFG
-import cv2
 import numpy as np
 import os
 from matplotlib import pyplot as plt
-import time
-import mediapipe as mp
-import torch
 from torchvision import transforms
 from util.PackPathwayTransform import PackPathway
 from torch.utils.data import Dataset

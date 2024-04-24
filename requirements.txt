@@ -4,7 +4,6 @@ google-auth-httplib2
 google-auth-oauthlib
 zipfile36
 opencv-python
-mediapipe
 matplotlib
 albumentations
 torch
