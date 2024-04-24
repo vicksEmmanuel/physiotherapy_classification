@@ -32,7 +32,6 @@ Where
 python data_preparation/action_dataset.py
 ```
 
-
 ## Train Actions Dataset
 
 ```
@@ -53,7 +52,6 @@ python train_slowfast.py
 # ──────────────────────────────────────────────────────────────
 ```
 
-
 ## Test Action Dataset
 
 ```
@@ -63,3 +61,5 @@ print(all_actions)
 
 python3 test_slowfast.py
 ```
+
+tensorboard logdir lightning_logs/

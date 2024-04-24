@@ -82,9 +82,9 @@ def insert_silent_segments(segments, total_duration):
 
     return updated_segments
 
-def get_audio(video_path, total_duration):
+def get_audio(video_path, total_duration, speech_file_path):
 
-    SPEECH_FILE = 'temporary_audio.wav'
+    SPEECH_FILE = speech_file_path
     convert_video_to_audio_file(video_path, SPEECH_FILE)
 
     # Load the model

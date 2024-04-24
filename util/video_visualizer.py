@@ -488,8 +488,6 @@ class VideoVisualizer:
                 )
             )
         
-        print("text_labels: ", text_labels)
-        
         frame_visualizer = ImgVisualizer(frame, meta=None)
         font_size = min(
             max(np.sqrt(frame.shape[0] * frame.shape[1]) // 35, 5), 9
@@ -508,12 +506,12 @@ class VideoVisualizer:
 
                 box_color = "r" if ground_truth else "g"
                 line_style = "--" if ground_truth else "-."
-                frame_visualizer.draw_box(
-                    box,
-                    alpha=alpha,
-                    edge_color=box_color,
-                    line_style=line_style,
-                )
+                # frame_visualizer.draw_box(
+                #     box,
+                #     alpha=alpha,
+                #     edge_color=box_color,
+                #     line_style=line_style,
+                # )
                 frame_visualizer.draw_multiple_text(
                     text,
                     box,

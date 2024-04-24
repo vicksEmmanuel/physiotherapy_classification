@@ -7,7 +7,6 @@ import cv2
 from util.config import *
 
 
-
 def get_video_clip_and_resize(video_path):
     cap = cv2.VideoCapture(video_path)
     fourcc = cv2.VideoWriter_fourcc(*'MP4V')
