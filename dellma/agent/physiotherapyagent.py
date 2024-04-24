@@ -102,8 +102,8 @@ class GradeAgent(DeLLMaAgent):
                 query += f"Discussions: {', '.join(item['discussions'])}\n"
                 query += "Actions and Discussions:\n"
                 for action_discussion in item['actions_and_discussions']:
-                    query += f"  Action: {action_discussion['action']}\n"
-                    query += f"  Discussion: {action_discussion['discussion']}\n"
+                    query += f"  Action: {action_discussion['actions']}\n"
+                    query += f"  Discussion: {action_discussion['discussions']}\n"
                 query += "\n"
             
             return query
