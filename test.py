@@ -141,6 +141,7 @@ def generate_actions_from_video(video_path):
     if not os.path.exists(new_path):
         new_path = get_video_clip_and_resize(video_path)
 
+
     encoded_vid = EncodedVideo.from_path(new_path)
     gif_imgs = []
     confidence_threshold = threshold
