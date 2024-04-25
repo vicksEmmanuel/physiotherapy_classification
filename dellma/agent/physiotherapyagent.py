@@ -109,7 +109,7 @@ class GradeAgent(DeLLMaAgent):
     
     def prepare_context(self) -> str:
         context = f"""Below are the grades I am considering: {", ".join(self.choices)}. I would like to know which grade I should give based on the information of their previous actions and discussion and the awared grade.
-        I can only choose one grade and this is the current actions and discussions of the students.\n\n {self.current_physiotherapy_analysis_to_grade} \n\n
+        I can only choose one grade and this is the current actions and discussions of the students.\n\n {json.dumps(self.current_physiotherapy_analysis_to_grade)} \n\n
         """
         for p in self.choices:
             context += self._format_grade_context(p)

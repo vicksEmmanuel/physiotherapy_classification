@@ -1,3 +1,4 @@
+import json
 import torch.nn.functional as F
 from flask import Flask, request, jsonify
 import os
@@ -44,9 +45,10 @@ def create_app():
             # Process the video file path
 
             result = get_new_data_from_video(video_path)
-            result = '''[{result}]'''
+            result = "[" + json.dumps(result) + "]"
             current_student_action = result
 
+            print(f" Actions generated: {current_student_action}")
             
 
         #     current_student_action = '''
@@ -99,7 +101,7 @@ def create_app():
 
             query, result = process_grades(
                 sc_samples=5,
-                dellma_mode="rank",
+                dellma_mode="cot",
                 current_physiotherapy_analysis_to_grade=convert_data_grade_agent_supported(current_student_action, query="")
             )
 
@@ -108,7 +110,8 @@ def create_app():
 
             return jsonify(result={
                 "query": query,
-                "result": result
+                "result": result,
+                "actions_and_discussions": current_student_action
             })
 
     return app

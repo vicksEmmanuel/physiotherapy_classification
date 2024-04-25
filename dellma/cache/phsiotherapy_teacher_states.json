@@ -29,92 +29,92 @@
 		"effective": "somewhat likely",
 		"ineffective": "unlikely"
 	},
-	"actions completeness average": {
+	"actions completeness average (average)": {
 		"thorough": "somewhat unlikely",
 		"adequate": "very likely",
 		"lacking": "unlikely"
 	},
-	"actions discussion alignment average": {
+	"actions discussion alignment average (average)": {
 		"well-aligned": "somewhat likely",
 		"somewhat aligned": "very likely",
 		"misaligned": "unlikely"
 	},
-	"communication average": {
+	"communication average (average)": {
 		"clear": "somewhat likely",
 		"adequate": "very likely",
 		"unclear": "unlikely"
 	},
-	"discussions quality average": {
+	"discussions quality average (average)": {
 		"insightful": "somewhat unlikely",
 		"relevant": "very likely",
 		"off-topic": "unlikely"
 	},
-	"domain knowledge average": {
+	"domain knowledge average (average)": {
 		"advanced": "somewhat unlikely",
 		"proficient": "very likely",
 		"beginner": "unlikely"
 	},
-	"problem solving average": {
+	"problem solving average (average)": {
 		"innovative": "somewhat unlikely",
 		"effective": "very likely",
 		"ineffective": "unlikely"
 	},
-	"actions completeness brief": {
+	"actions completeness brief (brief)": {
 		"thorough": "unlikely",
 		"adequate": "somewhat likely",
 		"lacking": "very likely"
 	},
-	"actions discussion alignment brief": {
+	"actions discussion alignment brief (brief)": {
 		"well-aligned": "unlikely",
 		"somewhat aligned": "somewhat likely",
 		"misaligned": "very likely"
 	},
-	"communication brief": {
+	"communication brief (brief)": {
 		"clear": "unlikely",
 		"adequate": "somewhat likely",
 		"unclear": "very likely"
 	},
-	"discussions quality brief": {
+	"discussions quality brief (brief)": {
 		"insightful": "unlikely",
 		"relevant": "somewhat likely",
 		"off-topic": "very likely"
 	},
-	"domain knowledge brief": {
+	"domain knowledge brief (brief)": {
 		"advanced": "unlikely",
 		"proficient": "somewhat likely",
 		"beginner": "very likely"
 	},
-	"problem solving brief": {
+	"problem solving brief (brief)": {
 		"innovative": "unlikely",
 		"effective": "somewhat likely",
 		"ineffective": "very likely"
 	},
-	"actions completeness good": {
+	"actions completeness good (good)": {
 		"thorough": "very likely",
 		"adequate": "somewhat likely",
 		"lacking": "unlikely"
 	},
-	"actions discussion alignment good": {
+	"actions discussion alignment good (good)": {
 		"well-aligned": "very likely",
 		"somewhat aligned": "somewhat likely",
 		"misaligned": "unlikely"
 	},
-	"communication good": {
+	"communication good (good)": {
 		"clear": "very likely",
 		"adequate": "somewhat likely",
 		"unclear": "unlikely"
 	},
-	"discussions quality good": {
+	"discussions quality good (good)": {
 		"insightful": "very likely",
 		"relevant": "somewhat likely",
 		"off-topic": "unlikely"
 	},
-	"domain knowledge good": {
+	"domain knowledge good (good)": {
 		"advanced": "very likely",
 		"proficient": "somewhat likely",
 		"beginner": "unlikely"
 	},
-	"problem solving good": {
+	"problem solving good (good)": {
 		"innovative": "very likely",
 		"effective": "somewhat likely",
 		"ineffective": "unlikely"

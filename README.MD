@@ -62,4 +62,4 @@ print(all_actions)
 python3 test_slowfast.py
 ```
 
-tensorboard logdir lightning_logs/
+tensorboard serve --logdir lightning_logs/

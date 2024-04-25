@@ -46,3 +46,4 @@ gunicorn
 Jinja2
 MarkupSafe
 anthropic
+bottleneck
