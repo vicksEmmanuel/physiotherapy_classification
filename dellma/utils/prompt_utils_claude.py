@@ -43,6 +43,7 @@ def inference(
                 temperature=temperature,
             )
 
+
             success = True
         except Exception as e:
             print(e)

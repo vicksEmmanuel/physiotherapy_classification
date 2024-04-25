@@ -327,6 +327,76 @@
 					"end_time": 146
 				}
 			]
+		},
+		{
+			"actions": ["schrober examination"],
+			"discussions": [
+				" Right, here we go.",
+				" So observing the front of the patient, you want to be looking for, you want to be looking at the feet if the point you're in or out.",
+				" The knees, if the various falgus, looking at the hips, how high, the line of the ASIS, Nipple line, see if there's any differences and then show the height.",
+				" Because these are coming in from the feet and then go to the connection.",
+				" Then looking from the side, you're looking at the pelvis, if it's anterior, posterior pelvic tilt, and also the line of other head sits in line with the ear and the acromion process.",
+				" Then looking at the back, looking at the curvature of the spine, see what information you can get from that.",
+				" Again, the foot posture, knee height, and shoulder height as well.",
+				" That's all right.",
+				""
+			],
+			"actions_and_discussions": [
+				{
+					"actions": ["schrober examination"],
+					"discussions": " Right, here we go.",
+					"start_time": 0,
+					"end_time": 5.0
+				},
+				{
+					"actions": [],
+					"discussions": " So observing the front of the patient, you want to be looking for, you want to be looking at the feet if the point you're in or out.",
+					"start_time": 5.0,
+					"end_time": 15.0
+				},
+				{
+					"actions": [],
+					"discussions": " The knees, if the various falgus, looking at the hips, how high, the line of the ASIS, Nipple line, see if there's any differences and then show the height.",
+					"start_time": 15.0,
+					"end_time": 34.0
+				},
+				{
+					"actions": [],
+					"discussions": " Because these are coming in from the feet and then go to the connection.",
+					"start_time": 34.0,
+					"end_time": 43.0
+				},
+				{
+					"actions": [],
+					"discussions": " Then looking from the side, you're looking at the pelvis, if it's anterior, posterior pelvic tilt, and also the line of other head sits in line with the ear and the acromion process.",
+					"start_time": 43.0,
+					"end_time": 68.0
+				},
+				{
+					"actions": [],
+					"discussions": " Then looking at the back, looking at the curvature of the spine, see what information you can get from that.",
+					"start_time": 68.0,
+					"end_time": 81.0
+				},
+				{
+					"actions": [],
+					"discussions": " Again, the foot posture, knee height, and shoulder height as well.",
+					"start_time": 81.0,
+					"end_time": 93.0
+				},
+				{
+					"actions": [],
+					"discussions": " That's all right.",
+					"start_time": 93.0,
+					"end_time": 98.0
+				},
+				{
+					"actions": [],
+					"discussions": "",
+					"start_time": 98.0,
+					"end_time": 146
+				}
+			]
 		}
 	]
 }

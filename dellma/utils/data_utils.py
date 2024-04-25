@@ -35,9 +35,17 @@ def convert_data_grade_agent_supported(data, query: str=""):
         query += "Actions per Discussions:\n"
         
         for action_discussion in item['actions_and_discussions']:
-            query += f"  Action: {action_discussion['actions']}\n"
-            query += f"  Discussion: {action_discussion['discussions']}\n"
+            if not action_discussion['actions']:
+                query += "  Action: None\n"
+            else:
+                query += f"  Action: {', '.join(action_discussion['actions'])}\n"
+
+            if not action_discussion['discussions']:
+                query += "  Discussion: None\n"
+            else:
+                query += f"  Discussion: {action_discussion['discussions']}\n"
         query += "\n\n"
+        
     return query
 
 def get_combinations() -> List[Tuple[str, ...]]:

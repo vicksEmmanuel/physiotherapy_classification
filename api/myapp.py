@@ -6,6 +6,7 @@ import sys
 current_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.dirname(current_dir)
 sys.path.append(project_root)
+from pprint import pprint
 
 from dellma.utils.data_utils import convert_data_grade_agent_supported
 from dellma.runner.dellma_predict import process_grades
@@ -53,7 +54,7 @@ def create_app():
 
         #     current_student_action = '''
         #     [{
-        #         "actions": [],
+        #         "actions": ["scrobar examination"],
         #         "discussions": [
         #             " Looking at the front of the patients, just looking at the posture, generally, any swelling",
         #             " and the knee, the muscle bulk, any potential injuries.",
@@ -64,7 +65,7 @@ def create_app():
         #         ],
         #         "actions_and_discussions": [
         #             {
-        #                 "actions": [],
+        #                 "actions": ["scrobar examination","hand examination"],
         #                 "discussions": " Looking at the front of the patients, just looking at the posture, generally, any swelling",
         #                 "start_time": 0,
         #                 "end_time": 15.0
@@ -107,11 +108,15 @@ def create_app():
 
             # Remove the uploaded video file after processing
             os.remove(video_path)
+            query = [i["prompt"].replace("\n", "<br/>").replace("\\n", "<br/>") for i in query]
 
-            return jsonify(result={
+            result = {
                 "query": query,
                 "result": result,
                 "actions_and_discussions": current_student_action
-            })
+            }
+            
+
+            return jsonify(result= result)
 
     return app
