@@ -99,7 +99,7 @@ def create_app():
 
             query, result = process_grades(
                 sc_samples=5,
-                dellma_mode="cot",
+                dellma_mode="rank",
                 current_physiotherapy_analysis_to_grade=convert_data_grade_agent_supported(current_student_action, query="")
             )
 
