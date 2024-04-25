@@ -43,58 +43,58 @@ def create_app():
 
             # Process the video file path
 
-            # result = get_new_data_from_video(video_path)
-            # result = '''[{result}]'''
-            # current_student_action = result
+            result = get_new_data_from_video(video_path)
+            result = '''[{result}]'''
+            current_student_action = result
 
             
 
-            current_student_action = '''
-            [{
-                "actions": [],
-                "discussions": [
-                    " Looking at the front of the patients, just looking at the posture, generally, any swelling",
-                    " and the knee, the muscle bulk, any potential injuries.",
-                    " The side, just looking at the pelvis, the rear, just looking at the back and the spine,",
-                    "",
-                    " and that's it, I think I'll go on.",
-                    ""
-                ],
-                "actions_and_discussions": [
-                    {
-                        "actions": [],
-                        "discussions": " Looking at the front of the patients, just looking at the posture, generally, any swelling",
-                        "start_time": 0,
-                        "end_time": 15.0
-                    },
-                    {
-                        "actions": [],
-                        "discussions": " and the knee, the muscle bulk, any potential injuries.",
-                        "start_time": 15.0,
-                        "end_time": 26.0
-                    },
-                    {
-                        "actions": [],
-                        "discussions": " The side, just looking at the pelvis, the rear, just looking at the back and the spine,",
-                        "start_time": 25.0,
-                        "end_time": 42.0
-                    },
-                    {
-                        "actions": [],
-                        "discussions": "",
-                        "start_time": 42.0,
-                        "end_time": 44.0
-                    },
-                    {
-                        "actions": [],
-                        "discussions": " and that's it, I think I'll go on.",
-                        "start_time": 44.0,
-                        "end_time": 48.0
-                    },
-                    { "actions": [], "discussions": "", "start_time": 48.0, "end_time": 73 }
-                ]
-            }]
-        '''
+        #     current_student_action = '''
+        #     [{
+        #         "actions": [],
+        #         "discussions": [
+        #             " Looking at the front of the patients, just looking at the posture, generally, any swelling",
+        #             " and the knee, the muscle bulk, any potential injuries.",
+        #             " The side, just looking at the pelvis, the rear, just looking at the back and the spine,",
+        #             "",
+        #             " and that's it, I think I'll go on.",
+        #             ""
+        #         ],
+        #         "actions_and_discussions": [
+        #             {
+        #                 "actions": [],
+        #                 "discussions": " Looking at the front of the patients, just looking at the posture, generally, any swelling",
+        #                 "start_time": 0,
+        #                 "end_time": 15.0
+        #             },
+        #             {
+        #                 "actions": [],
+        #                 "discussions": " and the knee, the muscle bulk, any potential injuries.",
+        #                 "start_time": 15.0,
+        #                 "end_time": 26.0
+        #             },
+        #             {
+        #                 "actions": [],
+        #                 "discussions": " The side, just looking at the pelvis, the rear, just looking at the back and the spine,",
+        #                 "start_time": 25.0,
+        #                 "end_time": 42.0
+        #             },
+        #             {
+        #                 "actions": [],
+        #                 "discussions": "",
+        #                 "start_time": 42.0,
+        #                 "end_time": 44.0
+        #             },
+        #             {
+        #                 "actions": [],
+        #                 "discussions": " and that's it, I think I'll go on.",
+        #                 "start_time": 44.0,
+        #                 "end_time": 48.0
+        #             },
+        #             { "actions": [], "discussions": "", "start_time": 48.0, "end_time": 73 }
+        #         ]
+        #     }]
+        # '''
 
 
             query, result = process_grades(

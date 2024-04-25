@@ -15,17 +15,17 @@ from dellma.agent.physiotherapyagent import GradeAgent
 #     chain_of_thought_inference,
 # )
 
-# from dellma.utils.prompt_utils_claude import (
-#     inference,
-#     majority_voting_inference,
-#     chain_of_thought_inference,
-# )
-
-from dellma.utils.prompt_utils_llama import (
+from dellma.utils.prompt_utils_claude import (
     inference,
     majority_voting_inference,
     chain_of_thought_inference,
 )
+
+# from dellma.utils.prompt_utils_llama import (
+#     inference,
+#     majority_voting_inference,
+#     chain_of_thought_inference,
+# )
 
 from dellma.utils.data_utils import convert_data_grade_agent_supported, get_combinations, GRADES
 from dellma.agent.agent import StateConfig, ActionConfig, PreferenceConfig

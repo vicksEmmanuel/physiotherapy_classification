@@ -209,6 +209,236 @@
 					"end_time": 234
 				}
 			]
+		},
+		{
+			"actions": [
+				"postural assessment",
+				"range of motion assessment",
+				"muscle strength testing"
+			],
+			"discussions": [
+				"Starting with a postural assessment, I'll observe the patient from the front, side, and back to identify any deviations or asymmetries in alignment.",
+				"Next, I'll assess the range of motion of the affected joints, comparing it to the unaffected side to identify any limitations or restrictions.",
+				"I'll then perform manual muscle strength testing to evaluate the strength of the key muscle groups involved in the patient's condition.",
+				"Throughout the assessment, I'll also palpate the relevant areas to check for any tenderness, swelling, or muscle spasms.",
+				"Based on the findings, I'll develop a targeted treatment plan that may include exercises, manual therapy techniques, and modalities to address the patient's specific needs."
+			],
+			"actions_and_discussions": [
+				{
+					"actions": ["postural assessment"],
+					"discussions": "Starting with a postural assessment, I'll observe the patient from the front, side, and back to identify any deviations or asymmetries in alignment.",
+					"start_time": 0,
+					"end_time": 15
+				},
+				{
+					"actions": ["range of motion assessment"],
+					"discussions": "Next, I'll assess the range of motion of the affected joints, comparing it to the unaffected side to identify any limitations or restrictions.",
+					"start_time": 15,
+					"end_time": 30
+				},
+				{
+					"actions": ["muscle strength testing"],
+					"discussions": "I'll then perform manual muscle strength testing to evaluate the strength of the key muscle groups involved in the patient's condition.",
+					"start_time": 30,
+					"end_time": 45
+				},
+				{
+					"actions": ["palpation"],
+					"discussions": "Throughout the assessment, I'll also palpate the relevant areas to check for any tenderness, swelling, or muscle spasms.",
+					"start_time": 45,
+					"end_time": 60
+				},
+				{
+					"actions": [],
+					"discussions": "Based on the findings, I'll develop a targeted treatment plan that may include exercises, manual therapy techniques, and modalities to address the patient's specific needs.",
+					"start_time": 60,
+					"end_time": 90
+				}
+			]
+		},
+		{
+			"actions": [
+				"gait assessment",
+				"balance assessment",
+				"neurological examination"
+			],
+			"discussions": [
+				"I'll begin by observing the patient's gait pattern, looking for any abnormalities or asymmetries in their stride, foot placement, and overall posture.",
+				"Then, I'll assess the patient's balance and proprioception through various static and dynamic balance tests.",
+				"A neurological examination will be conducted to assess the patient's sensation, reflexes, and muscle strength in the affected area and related dermatomes and myotomes.",
+				"I'll also perform specific tests to evaluate the patient's coordination and motor control.",
+				"The findings from these assessments will help me identify any underlying neurological or musculoskeletal issues contributing to the patient's condition."
+			],
+			"actions_and_discussions": [
+				{
+					"actions": ["gait assessment"],
+					"discussions": "I'll begin by observing the patient's gait pattern, looking for any abnormalities or asymmetries in their stride, foot placement, and overall posture.",
+					"start_time": 0,
+					"end_time": 20
+				},
+				{
+					"actions": ["balance assessment"],
+					"discussions": "Then, I'll assess the patient's balance and proprioception through various static and dynamic balance tests.",
+					"start_time": 20,
+					"end_time": 40
+				},
+				{
+					"actions": ["neurological examination"],
+					"discussions": "A neurological examination will be conducted to assess the patient's sensation, reflexes, and muscle strength in the affected area and related dermatomes and myotomes.",
+					"start_time": 40,
+					"end_time": 60
+				},
+				{
+					"actions": ["coordination tests", "motor control tests"],
+					"discussions": "I'll also perform specific tests to evaluate the patient's coordination and motor control.",
+					"start_time": 60,
+					"end_time": 75
+				},
+				{
+					"actions": [],
+					"discussions": "The findings from these assessments will help me identify any underlying neurological or musculoskeletal issues contributing to the patient's condition.",
+					"start_time": 75,
+					"end_time": 100
+				}
+			]
+		},
+		{
+			"actions": [
+				"postural assessment",
+				"joint mobility assessment",
+				"soft tissue assessment"
+			],
+			"discussions": [
+				"Starting with a postural assessment, I'll observe the patient's static and dynamic posture to identify any deviations or compensations.",
+				"I'll then assess the mobility of the joints in the affected area, checking for any restrictions or hypermobility.",
+				"A soft tissue assessment will be performed to evaluate the muscle tone, flexibility, and any trigger points or tender areas.",
+				"I'll also palpate the relevant joints and soft tissues to assess for any crepitus, swelling, or temperature changes.",
+				"Based on the assessment findings, I'll develop a treatment plan that may include manual therapy techniques, exercises, and patient education to address the identified issues."
+			],
+			"actions_and_discussions": [
+				{
+					"actions": ["postural assessment"],
+					"discussions": "Starting with a postural assessment, I'll observe the patient's static and dynamic posture to identify any deviations or compensations.",
+					"start_time": 0,
+					"end_time": 20
+				},
+				{
+					"actions": ["joint mobility assessment"],
+					"discussions": "I'll then assess the mobility of the joints in the affected area, checking for any restrictions or hypermobility.",
+					"start_time": 20,
+					"end_time": 35
+				},
+				{
+					"actions": ["soft tissue assessment"],
+					"discussions": "A soft tissue assessment will be performed to evaluate the muscle tone, flexibility, and any trigger points or tender areas.",
+					"start_time": 35,
+					"end_time": 50
+				},
+				{
+					"actions": ["palpation"],
+					"discussions": "I'll also palpate the relevant joints and soft tissues to assess for any crepitus, swelling, or temperature changes.",
+					"start_time": 50,
+					"end_time": 65
+				},
+				{
+					"actions": [],
+					"discussions": "Based on the assessment findings, I'll develop a treatment plan that may include manual therapy techniques, exercises, and patient education to address the identified issues.",
+					"start_time": 65,
+					"end_time": 90
+				}
+			]
+		},
+		{
+			"actions": [
+				"range of motion assessment",
+				"muscle length testing",
+				"joint play assessment"
+			],
+			"discussions": [
+				"I'll start by assessing the range of motion of the affected joints, using goniometry to measure and compare to the unaffected side.",
+				"Muscle length testing will be performed to identify any muscle tightness or shortening that may be contributing to the patient's symptoms.",
+				"I'll then assess the joint play and accessory movements of the affected joints to check for any restrictions or hypermobility.",
+				"Throughout the assessment, I'll monitor the patient's pain levels and adjust the techniques as needed.",
+				"The findings will help me determine the most appropriate manual therapy techniques and exercises to include in the patient's treatment plan."
+			],
+			"actions_and_discussions": [
+				{
+					"actions": ["range of motion assessment"],
+					"discussions": "I'll start by assessing the range of motion of the affected joints, using goniometry to measure and compare to the unaffected side.",
+					"start_time": 0,
+					"end_time": 25
+				},
+				{
+					"actions": ["muscle length testing"],
+					"discussions": "Muscle length testing will be performed to identify any muscle tightness or shortening that may be contributing to the patient's symptoms.",
+					"start_time": 25,
+					"end_time": 45
+				},
+				{
+					"actions": ["joint play assessment"],
+					"discussions": "I'll then assess the joint play and accessory movements of the affected joints to check for any restrictions or hypermobility.",
+					"start_time": 45,
+					"end_time": 60
+				},
+				{
+					"actions": ["pain monitoring"],
+					"discussions": "Throughout the assessment, I'll monitor the patient's pain levels and adjust the techniques as needed.",
+					"start_time": 60,
+					"end_time": 75
+				},
+				{
+					"actions": [],
+					"discussions": "The findings will help me determine the most appropriate manual therapy techniques and exercises to include in the patient's treatment plan.",
+					"start_time": 75,
+					"end_time": 95
+				}
+			]
+		},
+		{
+			"actions": [
+				"functional movement assessment",
+				"muscle strength testing",
+				"palpation"
+			],
+			"discussions": [
+				"I'll begin by observing the patient performing functional movements related to their daily activities and specific to their condition.",
+				"Manual muscle strength testing will be conducted to evaluate the strength of the key muscle groups involved in the patient's functional limitations.",
+				"I'll then palpate the relevant muscles and soft tissues to assess for any tenderness, trigger points, or muscle spasms.",
+				"The patient's posture and movement patterns will be analyzed throughout the assessment to identify any compensations or abnormalities.",
+				"Based on the assessment findings, I'll develop a treatment plan that focuses on improving the patient's functional abilities and addressing any underlying impairments."
+			],
+			"actions_and_discussions": [
+				{
+					"actions": ["functional movement assessment"],
+					"discussions": "I'll begin by observing the patient performing functional movements related to their daily activities and specific to their condition.",
+					"start_time": 0,
+					"end_time": 30
+				},
+				{
+					"actions": ["muscle strength testing"],
+					"discussions": "Manual muscle strength testing will be conducted to evaluate the strength of the key muscle groups involved in the patient's functional limitations.",
+					"start_time": 30,
+					"end_time": 50
+				},
+				{
+					"actions": ["palpation"],
+					"discussions": "I'll then palpate the relevant muscles and soft tissues to assess for any tenderness, trigger points, or muscle spasms.",
+					"start_time": 50,
+					"end_time": 65
+				},
+				{
+					"actions": ["postural analysis", "movement pattern analysis"],
+					"discussions": "The patient's posture and movement patterns will be analyzed throughout the assessment to identify any compensations or abnormalities.",
+					"start_time": 65,
+					"end_time": 80
+				},
+				{
+					"actions": [],
+					"discussions": "Based on the assessment findings, I'll develop a treatment plan that focuses on improving the patient's functional abilities and addressing any underlying impairments.",
+					"start_time": 80,
+					"end_time": 110
+				}
+			]
 		}
 	],
 	"brief": [
@@ -254,6 +484,146 @@
 					"end_time": 48.0
 				},
 				{ "actions": [], "discussions": "", "start_time": 48.0, "end_time": 73 }
+			]
+		},
+		{
+			"actions": ["observation"],
+			"discussions": [
+				"I'll observe the patient's posture and movement.",
+				"Then, I'll perform some basic assessments.",
+				"Based on the findings, I'll determine the next steps."
+			],
+			"actions_and_discussions": [
+				{
+					"actions": ["observation"],
+					"discussions": "I'll observe the patient's posture and movement.",
+					"start_time": 0,
+					"end_time": 10
+				},
+				{
+					"actions": [],
+					"discussions": "Then, I'll perform some basic assessments.",
+					"start_time": 10,
+					"end_time": 20
+				},
+				{
+					"actions": [],
+					"discussions": "Based on the findings, I'll determine the next steps.",
+					"start_time": 20,
+					"end_time": 30
+				}
+			]
+		},
+		{
+			"actions": ["palpation"],
+			"discussions": [
+				"I'll palpate the affected area to check for tenderness.",
+				"I'll also assess the patient's range of motion.",
+				"Treatment will be based on the assessment findings."
+			],
+			"actions_and_discussions": [
+				{
+					"actions": ["palpation"],
+					"discussions": "I'll palpate the affected area to check for tenderness.",
+					"start_time": 0,
+					"end_time": 15
+				},
+				{
+					"actions": ["range of motion assessment"],
+					"discussions": "I'll also assess the patient's range of motion.",
+					"start_time": 15,
+					"end_time": 25
+				},
+				{
+					"actions": [],
+					"discussions": "Treatment will be based on the assessment findings.",
+					"start_time": 25,
+					"end_time": 35
+				}
+			]
+		},
+		{
+			"actions": ["gait observation"],
+			"discussions": [
+				"I'll watch the patient walk to check their gait.",
+				"I'll look for any abnormalities or asymmetries.",
+				"The findings will guide my treatment approach."
+			],
+			"actions_and_discussions": [
+				{
+					"actions": ["gait observation"],
+					"discussions": "I'll watch the patient walk to check their gait.",
+					"start_time": 0,
+					"end_time": 15
+				},
+				{
+					"actions": [],
+					"discussions": "I'll look for any abnormalities or asymmetries.",
+					"start_time": 15,
+					"end_time": 25
+				},
+				{
+					"actions": [],
+					"discussions": "The findings will guide my treatment approach.",
+					"start_time": 25,
+					"end_time": 35
+				}
+			]
+		},
+		{
+			"actions": ["strength testing"],
+			"discussions": [
+				"I'll test the strength of the affected muscles.",
+				"I'll compare it to the unaffected side.",
+				"Treatment will focus on any identified weaknesses."
+			],
+			"actions_and_discussions": [
+				{
+					"actions": ["strength testing"],
+					"discussions": "I'll test the strength of the affected muscles.",
+					"start_time": 0,
+					"end_time": 15
+				},
+				{
+					"actions": ["strength comparison"],
+					"discussions": "I'll compare it to the unaffected side.",
+					"start_time": 15,
+					"end_time": 25
+				},
+				{
+					"actions": [],
+					"discussions": "Treatment will focus on any identified weaknesses.",
+					"start_time": 25,
+					"end_time": 35
+				}
+			]
+		},
+		{
+			"actions": ["movement assessment"],
+			"discussions": [
+				"I'll assess the patient's movement patterns.",
+				"I'll check for any limitations or compensations.",
+				"The assessment will inform my treatment plan."
+			],
+			"actions_and_discussions": [
+				{
+					"actions": ["movement assessment"],
+					"discussions": "I'll assess the patient's movement patterns.",
+					"start_time": 0,
+					"end_time": 15
+				},
+				{
+					"actions": [],
+					"discussions": "I'll check for any limitations or compensations.",
+					"start_time": 15,
+					"end_time": 25
+				},
+				{
+					"actions": [],
+					"discussions": "The assessment will inform my treatment plan.",
+					"start_time": 25,
+					"end_time": 35
+				}
 			]
 		}
 	],
@@ -325,6 +695,181 @@
 					"discussions": "",
 					"start_time": 98.0,
 					"end_time": 146
+				}
+			]
+		},
+		{
+			"actions": ["postural assessment", "range of motion assessment"],
+			"discussions": [
+				"I'll start by assessing the patient's posture from the front, back, and sides.",
+				"Then, I'll evaluate the range of motion of the affected joints and compare it to the unaffected side.",
+				"I'll note any limitations or asymmetries in the patient's posture and range of motion.",
+				"Based on the findings, I'll determine if any specific areas require further examination or treatment."
+			],
+			"actions_and_discussions": [
+				{
+					"actions": ["postural assessment"],
+					"discussions": "I'll start by assessing the patient's posture from the front, back, and sides.",
+					"start_time": 0,
+					"end_time": 20
+				},
+				{
+					"actions": ["range of motion assessment"],
+					"discussions": "Then, I'll evaluate the range of motion of the affected joints and compare it to the unaffected side.",
+					"start_time": 20,
+					"end_time": 40
+				},
+				{
+					"actions": [],
+					"discussions": "I'll note any limitations or asymmetries in the patient's posture and range of motion.",
+					"start_time": 40,
+					"end_time": 55
+				},
+				{
+					"actions": [],
+					"discussions": "Based on the findings, I'll determine if any specific areas require further examination or treatment.",
+					"start_time": 55,
+					"end_time": 75
+				}
+			]
+		},
+		{
+			"actions": ["muscle strength testing", "palpation"],
+			"discussions": [
+				"I'll assess the strength of the key muscle groups related to the patient's condition using manual muscle testing.",
+				"I'll palpate the affected area to check for any tenderness, muscle spasms, or trigger points.",
+				"The muscle strength and palpation findings will help guide my treatment plan.",
+				"I'll focus on addressing any identified muscle weaknesses or soft tissue restrictions."
+			],
+			"actions_and_discussions": [
+				{
+					"actions": ["muscle strength testing"],
+					"discussions": "I'll assess the strength of the key muscle groups related to the patient's condition using manual muscle testing.",
+					"start_time": 0,
+					"end_time": 25
+				},
+				{
+					"actions": ["palpation"],
+					"discussions": "I'll palpate the affected area to check for any tenderness, muscle spasms, or trigger points.",
+					"start_time": 25,
+					"end_time": 45
+				},
+				{
+					"actions": [],
+					"discussions": "The muscle strength and palpation findings will help guide my treatment plan.",
+					"start_time": 45,
+					"end_time": 60
+				},
+				{
+					"actions": [],
+					"discussions": "I'll focus on addressing any identified muscle weaknesses or soft tissue restrictions.",
+					"start_time": 60,
+					"end_time": 80
+				}
+			]
+		},
+		{
+			"actions": ["gait analysis", "balance assessment"],
+			"discussions": [
+				"I'll observe the patient's gait pattern and look for any deviations or abnormalities.",
+				"I'll assess the patient's balance and proprioception using static and dynamic balance tests.",
+				"The gait and balance findings will provide insights into the patient's functional abilities.",
+				"I'll use this information to develop a treatment plan that addresses any gait or balance impairments."
+			],
+			"actions_and_discussions": [
+				{
+					"actions": ["gait analysis"],
+					"discussions": "I'll observe the patient's gait pattern and look for any deviations or abnormalities.",
+					"start_time": 0,
+					"end_time": 20
+				},
+				{
+					"actions": ["balance assessment"],
+					"discussions": "I'll assess the patient's balance and proprioception using static and dynamic balance tests.",
+					"start_time": 20,
+					"end_time": 40
+				},
+				{
+					"actions": [],
+					"discussions": "The gait and balance findings will provide insights into the patient's functional abilities.",
+					"start_time": 40,
+					"end_time": 55
+				},
+				{
+					"actions": [],
+					"discussions": "I'll use this information to develop a treatment plan that addresses any gait or balance impairments.",
+					"start_time": 55,
+					"end_time": 75
+				}
+			]
+		},
+		{
+			"actions": ["joint mobility assessment", "special tests"],
+			"discussions": [
+				"I'll assess the mobility and end-feel of the affected joints to identify any restrictions or hypermobility.",
+				"I'll perform special tests to help rule in or rule out specific conditions related to the patient's symptoms.",
+				"The joint mobility and special test findings will guide my clinical reasoning and treatment approach.",
+				"I'll incorporate techniques to address any joint mobility limitations or impairments identified during the assessment."
+			],
+			"actions_and_discussions": [
+				{
+					"actions": ["joint mobility assessment"],
+					"discussions": "I'll assess the mobility and end-feel of the affected joints to identify any restrictions or hypermobility.",
+					"start_time": 0,
+					"end_time": 25
+				},
+				{
+					"actions": ["special tests"],
+					"discussions": "I'll perform special tests to help rule in or rule out specific conditions related to the patient's symptoms.",
+					"start_time": 25,
+					"end_time": 45
+				},
+				{
+					"actions": [],
+					"discussions": "The joint mobility and special test findings will guide my clinical reasoning and treatment approach.",
+					"start_time": 45,
+					"end_time": 65
+				},
+				{
+					"actions": [],
+					"discussions": "I'll incorporate techniques to address any joint mobility limitations or impairments identified during the assessment.",
+					"start_time": 65,
+					"end_time": 90
+				}
+			]
+		},
+		{
+			"actions": ["neurological examination", "sensation testing"],
+			"discussions": [
+				"I'll perform a neurological examination to assess the patient's motor and sensory function.",
+				"I'll test the patient's sensation in the affected area using light touch, pinprick, and vibration.",
+				"The neurological findings will help determine if there are any nerve-related issues contributing to the patient's condition.",
+				"I'll consider these findings when developing the treatment plan and determining if any referrals are necessary."
+			],
+			"actions_and_discussions": [
+				{
+					"actions": ["neurological examination"],
+					"discussions": "I'll perform a neurological examination to assess the patient's motor and sensory function.",
+					"start_time": 0,
+					"end_time": 25
+				},
+				{
+					"actions": ["sensation testing"],
+					"discussions": "I'll test the patient's sensation in the affected area using light touch, pinprick, and vibration.",
+					"start_time": 25,
+					"end_time": 45
+				},
+				{
+					"actions": [],
+					"discussions": "The neurological findings will help determine if there are any nerve-related issues contributing to the patient's condition.",
+					"start_time": 45,
+					"end_time": 65
+				},
+				{
+					"actions": [],
+					"discussions": "I'll consider these findings when developing the treatment plan and determining if any referrals are necessary.",
+					"start_time": 65,
+					"end_time": 90
 				}
 			]
 		}

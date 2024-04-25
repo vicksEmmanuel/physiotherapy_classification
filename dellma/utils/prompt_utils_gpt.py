@@ -7,7 +7,7 @@ import pandas as pd
 import openai
 from openai import OpenAI
 
-api_key =  os.environ["OPENAI_API_KEY"] #sk-proj-4REOm134jkMnA6HRXHRsT3BlbkFJlkX6SLi0D9nC2LuwfJMv
+api_key =  os.environ["OPENAI_API_KEY"]
 CLIENT = OpenAI()
 
 SUMMARY_PROMPT = (
