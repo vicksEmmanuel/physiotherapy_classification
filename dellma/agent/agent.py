@@ -9,12 +9,13 @@ from typing import Optional, Dict, List, Tuple, Callable
 import numpy as np
 import yaml
 
-project_home =  '/Users/victorumesiobi/Desktop/vicks/Me/Pythorch/physiotherapy_classification' # os.environ["HOME"] #
 
-PROJECT_ROOT =  project_home + "/dellma/"
-sys.path.append(PROJECT_ROOT)
+current_dir = os.path.dirname(os.path.abspath(__file__))
+project_root = os.path.dirname(current_dir)
+PROJECT_ROOT = project_root
+sys.path.append(project_root)
 
-from utils.prompt_utils import format_query
+from dellma.utils.prompt_utils_llama import format_query
 
 
 @dataclass
@@ -375,7 +376,7 @@ For example, if one of the state variable is 'actions completeness', and the top
         if version == "utility":
             state_prompt = f"""{prefix}First think about the unknown factors that would affect your final decisions. """
             utility_prompt_func = (
-                lambda s: f"""{prefix}Now I have enumerated the unknown factors that would affect my final decisions:\n\n {dict_to_str(s)} \n\nGiven these unknow factors, think about the possiblity that each factor would occur within a {self.period}. 
+                lambda s: f"""{prefix}Now I have enumerated the unknown factors that would affect my final decisions:\n\n {dict_to_str(s)} \n\nGiven these unknow factors, think about the possiblity that each factor would occur within a period. 
     You should format your response as a JSON object, where in each key should be a factor variable listed above. 
 
     Each key should map to a JSON object with {self.state_config.topk} keys, each of which is a string that describes the value of the factor variable. Together, these keys should enumerate the top {self.state_config.topk} most likely values of the factor variable. Each key should map to your belief verbalized in natural language. If the factor variable is continuous (e.g. changes to a quantity), you should discretize it into {self.state_config.topk} bins.

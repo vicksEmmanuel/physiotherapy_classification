@@ -101,8 +101,6 @@ def get_audio(video_path, total_duration, speech_file_path):
     # Calling the function to insert silent segments
     updated_segments = insert_silent_segments(segments, total_duration)
 
-    print(updated_segments)
-
     print("Deleting the audio file")
     os.remove(SPEECH_FILE)
     return updated_segments

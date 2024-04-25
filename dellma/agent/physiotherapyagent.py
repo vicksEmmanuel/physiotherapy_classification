@@ -1,21 +1,23 @@
 import json
-import os
-import sys
 from dataclasses import dataclass
 from itertools import product
 from typing import List, Dict, Optional
 import pandas as pd
 
+import os
+import sys
+current_dir = os.path.dirname(os.path.abspath(__file__))
+project_root = os.path.dirname(current_dir)
+sys.path.append(project_root)
+
 from agent.agent import (
-    PROJECT_ROOT,
     DeLLMaAgent,
     StateConfig,
     ActionConfig,
     PreferenceConfig,
 )
 
-sys.path.append(PROJECT_ROOT)
-from utils.data_utils import GRADES, GRADES_OBJECT_PAIRS
+from utils.data_utils import GRADES, GRADES_OBJECT_PAIRS, convert_data_grade_agent_supported
 
 
 class GradeAgent(DeLLMaAgent):
@@ -49,13 +51,14 @@ class GradeAgent(DeLLMaAgent):
     def __init__(
         self,
         choices: List[str],
-        path: str = os.path.join(PROJECT_ROOT, "data/grades/"),
+        path: str = "dellma/data/grades/",
         raw_context_fname: str = "report.json",
         temperature: float = 0.0,
         state_config: Optional[dataclass] = None,
         action_config: Optional[dataclass] = None,
         preference_config: Optional[dataclass] = None,
         agent_name: str = "phsiotherapy_teacher",
+        current_physiotherapy_analysis_to_grade: str = ''
     ):
         assert set(choices).issubset(set(self.grade))
         self.choices = sorted(set(choices))
@@ -72,6 +75,8 @@ class GradeAgent(DeLLMaAgent):
             preference_config,
             agent_name,
         )
+
+        self.current_physiotherapy_analysis_to_grade = current_physiotherapy_analysis_to_grade
 
         if (
             self.state_config.state_enum_mode != "base"
@@ -95,24 +100,16 @@ class GradeAgent(DeLLMaAgent):
 
         if grade in data:
             grade_data = data[grade]
-            query = f"Below are the information about grade {grade} (i.e. {self.grade_symbol_to_name_map[grade]}).\n\n"
-            
-            for item in grade_data:
-                query += f"Actions: {', '.join(item['actions'])}\n"
-                query += f"Discussions: {', '.join(item['discussions'])}\n"
-                query += "Actions and Discussions:\n"
-                for action_discussion in item['actions_and_discussions']:
-                    query += f"  Action: {action_discussion['actions']}\n"
-                    query += f"  Discussion: {action_discussion['discussions']}\n"
-                query += "\n"
+            query = f"Below are the information about the actions and discussions per the grade {grade} (i.e. {self.grade_symbol_to_name_map[grade]}).\n\n"
+            query = convert_data_grade_agent_supported(grade_data, query)
             
             return query
         else:
             return f"No data found for grade {grade}."
     
     def prepare_context(self) -> str:
-        context = f"""Below are the grades I am considering: {", ".join(self.choices)}. I would like to know which grade I should give based on the actions and discussions used to analyse their patients.
-        I can only choose one grade.
+        context = f"""Below are the grades I am considering: {", ".join(self.choices)}. I would like to know which grade I should give based on the information of their previous actions and discussion and the awared grade.
+        I can only choose one grade and this is the current actions and discussions of the students.\n\n {self.current_physiotherapy_analysis_to_grade} \n\n
         """
         for p in self.choices:
             context += self._format_grade_context(p)

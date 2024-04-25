@@ -2,6 +2,7 @@ from collections import deque
 from typing import List, Tuple, Optional
 import pandas as pd
 from itertools import combinations
+import json
 
 
 
@@ -12,7 +13,32 @@ GRADES = ["good","brief","average"]
 GRADES_OBJECT_PAIRS = convert_list_to_dict(GRADES)
 
 
+def convert_data_grade_agent_supported(data, query: str=""):
+    if isinstance(data, str):
+        try:
+            data = json.loads(data)
+        except json.JSONDecodeError:
+            return data
+        
+    for item in data:
+        if item['actions']:
+            query += f"Total Actions: {', '.join(item['actions'])}\n"
+        else:
+            query += "Total Actions: None\n"
 
+        if not item['discussions']:
+            query += "Total Discussions: None\n"
+        else:
+            query += f"Total Discussions: {', '.join(item['discussions'])}\n"
+
+
+        query += "Actions per Discussions:\n"
+        
+        for action_discussion in item['actions_and_discussions']:
+            query += f"  Action: {action_discussion['actions']}\n"
+            query += f"  Discussion: {action_discussion['discussions']}\n"
+        query += "\n\n"
+    return query
 
 def get_combinations() -> List[Tuple[str, ...]]:
     combs = []
