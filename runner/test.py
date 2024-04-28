@@ -12,10 +12,7 @@ sys.path.append(project_root)
 from torchvision.transforms.functional import normalize as normalize_image
 from torchvision.transforms.functional import to_tensor
 from util.actions import Action
-from detectron2.config import get_cfg
 from pytorchvideo.models.hub import slow_r50_detection 
-from detectron2 import model_zoo
-from detectron2.engine import DefaultPredictor
 import torch
 from torch.nn import functional as F
 from torch import nn

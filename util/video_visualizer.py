@@ -31,8 +31,6 @@ def get_class_names(pbtxt_path, subset_path=None, class_parent=None):
             
     return class_names, class_parent, subset_ids
 
-
-
 def _create_text_labels(classes, scores, class_names, ground_truth=False):
     """
     Create text labels.
