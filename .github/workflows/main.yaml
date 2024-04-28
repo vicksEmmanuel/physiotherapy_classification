@@ -25,10 +25,10 @@ jobs:
       - name: Clean up docker
         run: docker system prune -f
       - name: Delete old container
-        run: docker rm -f physiotherapy_student_analysis-container
+        run: docker rm -f physiotherapy_student_analysis-container-new
       - name: Login to docker hub
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
       - name: Pull image from docker hub
         run: docker pull ${{ secrets.DOCKER_USERNAME }}/physiotherapy_student_analysis:latest
       - name: Run docker container
-        run: docker run -d -p 80:8080 --name physiotherapy_student_analysis-container -e OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }} -e ANTHROPIC_API_KEY=${{ secrets.ANTHROPIC_API_KEY }} vicksemmanuel/physiotherapy_student_analysis
+        run: docker run -d -p 80:8080 --name physiotherapy_student_analysis-container-new -e OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }} -e ANTHROPIC_API_KEY=${{ secrets.ANTHROPIC_API_KEY }} vicksemmanuel/physiotherapy_student_analysis

@@ -62,8 +62,8 @@ def get_combinations() -> List[Tuple[str, ...]]:
 
 
 def merge_by_commodity(
-    df_x: pd.DataFrame | str,
-    df_y: pd.DataFrame | str,
+    df_x,
+    df_y,
     on: str = "Commodity",
 ) -> pd.DataFrame:
     if type(df_x) == str:
