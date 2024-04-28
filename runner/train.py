@@ -1,9 +1,18 @@
+
+
+import os
+import sys
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+project_root = os.path.dirname(current_dir)
+sys.path.append(project_root)
+
+
 from pytorch_lightning.callbacks import ModelCheckpoint, RichProgressBar
 from pytorch_lightning import Trainer, seed_everything
 from util.action_dataset import ActionDataset
 from util.config import CFG
 import numpy as np
-import os
 from matplotlib import pyplot as plt
 from torchvision import transforms
 from util.PackPathwayTransform import PackPathway

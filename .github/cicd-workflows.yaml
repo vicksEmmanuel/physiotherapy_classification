@@ -1,0 +1,35 @@
+# @format
+
+name: CICD
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+      - name: Login to docker hub
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+      - name: Build docker image
+        run: docker build -t vicksemmanuel/physiotherapy_student_analysis .
+      - name: Publish image to docker hub
+        run: docker push vicksemmanuel/physiotherapy_student_analysis:latest
+
+  deploy:
+    needs: build
+    runs-on: self-hosted
+    steps:
+      - name: Clean up docker
+        run: docker system prune -f
+      - name: Delete old container
+        run: docker rm -f physiotherapy_student_analysis-container
+      - name: Login to docker hub
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+      - name: Pull image from docker hub
+        run: docker pull ${{ secrets.DOCKER_USERNAME }}/physiotherapy_student_analysis:latest
+      - name: Run docker container
+        run: docker run -d -p 80:8080 --name physiotherapy_student_analysis-container vicksemmanuel/physiotherapy_student_analysis
