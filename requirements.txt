@@ -30,7 +30,6 @@ tensorboard
 fairscale
 moviepy
 git+https://github.com/facebookresearch/pytorchvideo.git
-git+https://github.com/facebookresearch/detectron2.git
 rich
 choix==0.3.5
 numpy==1.26.3
