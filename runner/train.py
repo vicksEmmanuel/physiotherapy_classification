@@ -70,7 +70,7 @@ def train(config):
         # logger=wandb_logger,
         # accelerator='cpu', # 'ddp' for distributed computing
         # accelerator='gpu', # 'ddp' for distributed computing
-        # devices=1, # Use 1 GPU
+        devices=1, # Use 1 GPU
         # overfit_batches=0.05,
         # strategy='ddp',
         # sync_batchnorm=True,
