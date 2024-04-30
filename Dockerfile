@@ -15,6 +15,7 @@ COPY requirements.txt /app/
 RUN pip install -r requirements.txt
 RUN pip3 install git+https://github.com/facebookresearch/detectron2.git
 
+
 # Copy the necessary files and directories from the GitHub Actions workspace
 COPY api/ /app/api/
 COPY checkpoints/ /app/checkpoints/
