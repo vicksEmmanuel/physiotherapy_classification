@@ -8,29 +8,48 @@ on:
 jobs:
   build:
     runs-on: [ubuntu-latest]
+
     steps:
       - name: Checkout source
         uses: actions/checkout@v3
         with:
           lfs: true
+
+      # Add this step to increase the workspace size
+      - name: Increase workspace size
+        run: |
+          df -h
+          sudo swapoff -a
+          sudo fallocate -l 64G /swapfile
+          sudo mkswap /swapfile
+          sudo swapon /swapfile
+          df -h
+
       - name: Login to docker hub
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+
       - name: Build docker image
         run: docker build -t vicksemmanuel/physiotherapy_student_analysis .
+
       - name: Publish image to docker hub
         run: docker push vicksemmanuel/physiotherapy_student_analysis:latest
 
   deploy:
     needs: build
     runs-on: self-hosted
+
     steps:
       - name: Clean up docker
         run: docker system prune -f
+
       - name: Delete old container
         run: docker rm -f physiotherapy_student_analysis-container-new
+
       - name: Login to docker hub
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+
       - name: Pull image from docker hub
         run: docker pull ${{ secrets.DOCKER_USERNAME }}/physiotherapy_student_analysis:latest
+
       - name: Run docker container
         run: docker run -d -p 80:8080 --name physiotherapy_student_analysis-container-new -e OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }} -e ANTHROPIC_API_KEY=${{ secrets.ANTHROPIC_API_KEY }} vicksemmanuel/physiotherapy_student_analysis
