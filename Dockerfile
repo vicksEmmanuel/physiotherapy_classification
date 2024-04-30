@@ -15,13 +15,9 @@ COPY requirements.txt /app/
 RUN pip install -r requirements.txt
 RUN pip3 install git+https://github.com/facebookresearch/detectron2.git
 
-# Clone the repository and fetch LFS files
-RUN git clone <repository-url> /app/repo
-WORKDIR /app/repo
-RUN git lfs pull
-
-# Copy the necessary files and directories
+# Copy the necessary files and directories from the GitHub Actions workspace
 COPY api/ /app/api/
+COPY checkpoints/ /app/checkpoints/
 COPY data/ /app/data/
 COPY dellma/ /app/dellma/
 COPY model/ /app/model/
