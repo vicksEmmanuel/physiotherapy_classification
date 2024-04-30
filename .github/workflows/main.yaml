@@ -17,6 +17,10 @@ jobs:
       - name: Login to docker hub
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
+
+      - name: Restart Docker
+        run: sudo systemctl stop docker && sudo systemctl start docker
+
       - name: Build docker image
         run: docker build -t vicksemmanuel/physiotherapy_student_analysis .
 
