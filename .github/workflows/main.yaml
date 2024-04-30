@@ -8,6 +8,7 @@ on:
 jobs:
   build:
     runs-on: [self-hosted]
+    timeout-minutes: 120
 
     steps:
       - name: Checkout source
@@ -16,7 +17,6 @@ jobs:
           lfs: true
       - name: Login to docker hub
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-
 
       - name: Restart Docker
         run: sudo systemctl stop docker && sudo systemctl start docker
