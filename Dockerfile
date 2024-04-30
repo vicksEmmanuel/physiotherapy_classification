@@ -16,6 +16,12 @@ RUN pip install -r requirements.txt
 RUN pip3 install git+https://github.com/facebookresearch/detectron2.git
 
 
+# Install system dependencies
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    ffmpeg \
+    && rm -rf /var/lib/apt/lists/*
+
 # Copy the necessary files and directories from the GitHub Actions workspace
 COPY api/ /app/api/
 COPY checkpoints/ /app/checkpoints/

@@ -14,17 +14,6 @@ jobs:
         uses: actions/checkout@v3
         with:
           lfs: true
-
-      # Add this step to increase the workspace size
-      # - name: Increase workspace size
-      #   run: |
-      #     df -h
-      #     sudo swapoff -a
-      #     sudo fallocate -l 64G /swapfile
-      #     sudo mkswap /swapfile
-      #     sudo swapon /swapfile
-      #     df -h
-
       - name: Login to docker hub
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
