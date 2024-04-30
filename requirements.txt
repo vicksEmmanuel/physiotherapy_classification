@@ -6,11 +6,11 @@ zipfile36
 opencv-python
 matplotlib
 albumentations
-torch
+torch==2.2.2
 torchvision
 pytorchvideo
-pytorch-lightning
-pytorch_lightning
+pytorch-lightning==2.2.2
+pytorch_lightning==2.2.2
 requests
 openai-whisper
 pandas
