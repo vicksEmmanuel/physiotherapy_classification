@@ -3,6 +3,8 @@ FROM python:3.11
 WORKDIR /app
 
 COPY requirements.txt /app/
+RUN yum update && yum install -y mesa-libGL
+RUN yum install -y glib2 libSM libXrender libXext
 RUN pip install -r requirements.txt
 RUN pip3 install git+https://github.com/facebookresearch/detectron2.git
 
