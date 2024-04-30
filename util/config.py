@@ -3,7 +3,7 @@ class CFG:
     num_frames = 4
     num_classes = 31
     batch_size = 8
-    num_workers = 32
+    num_workers = 4 #0 #32
     learning_rate = 1e-4
     num_epochs = 100
     drop_prob = 0.
