@@ -18,8 +18,8 @@ RUN pip3 install git+https://github.com/facebookresearch/detectron2.git
 # Copy the necessary files and directories from the GitHub Actions workspace
 COPY api/ /app/api/
 COPY checkpoints/ /app/checkpoints/
-COPY data/test_data/ /app/data/test_data/
-COPY data/actions_dataset/ /app/data/actions_dataset/
+COPY /data/test_data/ /app/data/test_data/
+COPY /data/actions_dataset/ /app/data/actions_dataset/
 COPY dellma/ /app/dellma/
 COPY model/ /app/model/
 COPY util/ /app/util/
