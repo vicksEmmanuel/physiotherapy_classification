@@ -1,1 +1,6 @@
 node_modules
+data/frames
+data/frames_dataset
+data/prepared_video_dataset
+data/test_data
+data/video_actions_annotated_data
