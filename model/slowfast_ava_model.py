@@ -48,6 +48,7 @@ class SlowFastAva(LightningModule):
         scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, factor=0.9, patience=4, cooldown=2)
         return {"optimizer": optimizer, "lr_scheduler": scheduler, "monitor": "valid_loss"}
     
+    
     def on_training_epoch_end(self):
         sch = self.lr_schedulers()
 
