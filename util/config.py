@@ -13,3 +13,4 @@ class CFG:
     width = 224
     slowfast = True
     limit_step_per_batch=200
+    limit_step_per_batch_for_validation=50

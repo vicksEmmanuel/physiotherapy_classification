@@ -77,8 +77,8 @@ def train(config):
         max_epochs=config.num_epochs,
         num_sanity_val_steps=0,
         limit_train_batches=config.limit_step_per_batch,
-        limit_val_batches=config.limit_step_per_batch / 2 ,
-        limit_test_batches=config.limit_step_per_batch / 2,    
+        limit_val_batches=config.limit_step_per_batch_for_validation,
+        limit_test_batches=config.limit_step_per_batch_for_validation, 
         callbacks=[
             RichProgressBar(),
             checkpoint_callback
