@@ -1,8 +1,8 @@
 import json
-import torch.nn.functional as F
 from flask import Flask, request, jsonify
 import os
 import sys
+print(sys.version)
 current_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.dirname(current_dir)
 sys.path.append(project_root)
