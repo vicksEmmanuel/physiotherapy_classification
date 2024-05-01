@@ -9,31 +9,31 @@ RUN apt-get install -y git-lfs
 RUN git lfs install
 
 # Install required packages
-RUN apt-get update && \
-    apt-get install -y software-properties-common && \
-    rm -rf /var/lib/apt/lists/*
+# RUN apt-get update && \
+#     apt-get install -y software-properties-common && \
+#     rm -rf /var/lib/apt/lists/*
 
 # Install Python 3.11
-RUN apt-get update && \
-    apt-get install -y python3.11 && \
-    rm -rf /var/lib/apt/lists/*
+# RUN apt-get update && \
+#     apt-get install -y python3.11 && \
+#     rm -rf /var/lib/apt/lists/*
 
 # Add NVIDIA package repository
-RUN apt-get update && \
-    apt-get install -y gnupg2 curl && \
-    curl -fsSL https://developer.download.nvidia.com/compute/cuda/repos/debian11/x86_64/3bf863cc.pub | apt-key add - && \
-    echo "deb https://developer.download.nvidia.com/compute/cuda/repos/debian11/x86_64 /" > /etc/apt/sources.list.d/cuda.list
+# RUN apt-get update && \
+#     apt-get install -y gnupg2 curl && \
+#     curl -fsSL https://developer.download.nvidia.com/compute/cuda/repos/debian11/x86_64/3bf863cc.pub | apt-key add - && \
+#     echo "deb https://developer.download.nvidia.com/compute/cuda/repos/debian11/x86_64 /" > /etc/apt/sources.list.d/cuda.list
 
 
-# Install CUDA components
-RUN apt-get update && apt-get install -y \
-    cuda-11-8 \
-    cuda-libraries-11-8 \
-    cuda-nvml-dev-11-8 \
-    cuda-command-line-tools-11-8 \
-    libnvidia-compute-11-8 \
-    libnvidia-decode-11-8 \
-    libnvidia-encode-11-8
+# # Install CUDA components
+# RUN apt-get update && apt-get install -y \
+#     cuda-11-8 \
+#     cuda-libraries-11-8 \
+#     cuda-nvml-dev-11-8 \
+#     cuda-command-line-tools-11-8 \
+#     libnvidia-compute-11-8 \
+#     libnvidia-decode-11-8 \
+#     libnvidia-encode-11-8
 
 # Install additional CUDA libraries (if needed)
 # RUN sudo apt install ./<filename.deb>
@@ -42,7 +42,7 @@ RUN apt-get update && apt-get install -y \
 # RUN sudo apt install libcudnn8 libcudnn8-dev libcudnn8-samples
 
 # Install Python package manager
-RUN apt-get install -y python3-pip
+# RUN apt-get install -y python3-pip
 
 # Install Python dependencies
 COPY requirements.txt /app/
