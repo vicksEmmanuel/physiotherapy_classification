@@ -24,7 +24,7 @@ from util.util_2 import  get_video_clip_and_resize, get_video_clip_and_resize3, 
 from pytorchvideo.data.encoded_video import EncodedVideo
 import torch
 from torchvision.transforms import functional as F
-from util.video_visualizer import VideoVisualizer
+# from util.video_visualizer import VideoVisualizer
 import pytorchvideo.models.slowfast as SlowFastModel
 import cv2
 from model.slowfast_ava_model import SlowFastAva  # Ensure this import matches your project structure
@@ -125,13 +125,13 @@ def generate_actions_from_video(video_path):
     model.eval()
     model.to(device)
 
-    video_visualizer = VideoVisualizer(
-        num_classes=len(actions),
-        class_names_path='data/actions_dataset/activity_net.pbtxt',
-        top_k=3, 
-        mode="thres",
-        thres=threshold
-    )
+    # video_visualizer = VideoVisualizer(
+    #     num_classes=len(actions),
+    #     class_names_path='data/actions_dataset/activity_net.pbtxt',
+    #     top_k=3, 
+    #     mode="thres",
+    #     thres=threshold
+    # )
 
     path_without_extension = os.path.splitext(video_path)[0]
     new_path = f"{path_without_extension}_resized.mp4"
@@ -189,8 +189,8 @@ def generate_actions_from_video(video_path):
         # Plot predictions on the video and save for later visualization.
         inp_imgs = inp_imgs.permute(1,2,3,0)
         inp_imgs = inp_imgs/255.0
-        out_img_pred = video_visualizer.draw_clip_range(inp_imgs, preds, predicted_boxes)
-        gif_imgs += out_img_pred
+        # out_img_pred = video_visualizer.draw_clip_range(inp_imgs, preds, predicted_boxes)
+        # gif_imgs += out_img_pred
     
     print("Finished generating predictions.")
     # TODO: Generate videos that contains the actions
