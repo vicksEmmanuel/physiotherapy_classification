@@ -1,5 +1,4 @@
 import json
-import torch.nn.functional as F
 from flask import Flask, request, jsonify
 import os
 import sys
