@@ -99,7 +99,7 @@ def create_app():
         #     }]
         # '''
 
-            dellma_mode = "rank-minibatch"
+            dellma_mode = "cot"
 
             query, result = process_grades(
                 sc_samples=5,
