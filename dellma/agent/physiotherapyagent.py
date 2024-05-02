@@ -34,6 +34,8 @@ class GradeAgent(DeLLMaAgent):
             "domain knowledge": "the domain knowledge of the students",
             "communication": "the communication of the students",
             "problem solving": "the problem solving of the students",
+            "actions detected according to the discussion timeline": "the actions detected per the discussions timeline",
+            "action detected": "the actions detected during the analysis"
         },
         # product-specific state variables
         "specific": {
@@ -43,6 +45,8 @@ class GradeAgent(DeLLMaAgent):
             "domain knowledge": lambda c: f"the domain knowledge of the students",
             "communication": lambda c: f"the communication of the students",
             "problem solving": lambda c: f"the problem solving of the students",
+            "actions detected according to the discussion timeline": lambda c: f"the actions detected per the discussions timeline",
+            "action detected": lambda c: f"the actions detected during the analysis"
         },
     }
 

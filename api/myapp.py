@@ -99,16 +99,19 @@ def create_app():
         #     }]
         # '''
 
+            dellma_mode = "rank-minibatch"
 
             query, result = process_grades(
                 sc_samples=5,
-                dellma_mode="cot",
+                dellma_mode=dellma_mode,
                 current_physiotherapy_analysis_to_grade=convert_data_grade_agent_supported(current_student_action, query="")
             )
 
             # Remove the uploaded video file after processing
             os.remove(video_path)
-            query = [i["prompt"].replace("\n", "<br/>").replace("\\n", "<br/>") for i in query]
+            
+            if (dellma_mode != "rank"):
+                query = [i["prompt"].replace("\n", "<br/>").replace("\\n", "<br/>") for i in query]
 
             result = {
                 "query": query,

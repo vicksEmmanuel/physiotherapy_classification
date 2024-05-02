@@ -1,4 +1,14 @@
 {
+	"action detected": {
+		"yes": "very likely",
+		"no": "very unlikely"
+	},
+
+	"actions detected according to the discussion timeline": {
+		"yes": "very likely",
+		"no": "very unlikely"
+	},
+
 	"actions completeness": {
 		"thorough": "very likely",
 		"adequate": "somewhat likely",
@@ -34,6 +44,16 @@
 		"adequate": "very likely",
 		"lacking": "unlikely"
 	},
+
+	"actions detected according to the discussion timeline average (average)": {
+		"yes": "likely",
+		"no": "somewhat unlikely"
+	},
+
+	"action detected average (average)": {
+		"yes": "likely",
+		"no": "very unlikely"
+	},
 	"actions discussion alignment average (average)": {
 		"well-aligned": "somewhat likely",
 		"somewhat aligned": "very likely",
@@ -64,6 +84,16 @@
 		"adequate": "somewhat likely",
 		"lacking": "very likely"
 	},
+	"action detected brief (brief)": {
+		"yes": "very unlikely",
+		"no": "very likely"
+	},
+
+	"actions detected according to the discussion timeline brief (brief)": {
+		"yes": "very unlikely",
+		"no": "very likely"
+	},
+
 	"actions discussion alignment brief (brief)": {
 		"well-aligned": "unlikely",
 		"somewhat aligned": "somewhat likely",
@@ -94,6 +124,16 @@
 		"adequate": "somewhat likely",
 		"lacking": "unlikely"
 	},
+	"action detected good (good)": {
+		"yes": "very likely",
+		"no": "very unlikely"
+	},
+
+	"actions detected according to the discussion timeline good (good)": {
+		"yes": "very likely",
+		"no": "very unlikely"
+	},
+
 	"actions discussion alignment good (good)": {
 		"well-aligned": "very likely",
 		"somewhat aligned": "somewhat likely",
