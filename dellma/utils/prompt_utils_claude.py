@@ -95,8 +95,19 @@ def majority_voting_inference(
         responses.append(response)
 
     print(f"responses:  ======>>> \n\n\n\n{responses}")
-    decisions = [r["decision"] for r in responses]
+
+    decisions = []
+
+    for r in responses:
+        try:
+            decisions.append(r['decision'])
+        except Exception as e:
+            print(e)
+
+    print(f" decision: {decisions}")
+
     majority_decision = max(set(decisions), key=decisions.count)
+
     response = {
         "decision": majority_decision,
         "explanation": responses,

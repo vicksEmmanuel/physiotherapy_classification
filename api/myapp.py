@@ -99,7 +99,7 @@ def create_app():
         #     }]
         # '''
 
-            dellma_mode = "cot"
+            dellma_mode = "self-consistency"
 
             query, result = process_grades(
                 sc_samples=5,
@@ -109,8 +109,8 @@ def create_app():
 
             # Remove the uploaded video file after processing
             os.remove(video_path)
-            
-            if (dellma_mode != "rank"):
+
+            if (dellma_mode != "rank" and dellma_mode != 'self-consistency'):
                 query = [i["prompt"].replace("\n", "<br/>").replace("\\n", "<br/>") for i in query]
 
             result = {

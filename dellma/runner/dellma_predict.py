@@ -55,7 +55,7 @@ def process_grades(
     action_config = ActionConfig()
 
     if dellma_mode.startswith("rank"):
-        state_enum_mode = "sequential"
+        state_enum_mode = "minibatch"
         preference_config = PreferenceConfig(
             pref_enum_mode=dellma_mode,
             sample_size=sample_size,

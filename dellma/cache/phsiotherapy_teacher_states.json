@@ -14,31 +14,37 @@
 		"adequate": "somewhat likely",
 		"lacking": "unlikely"
 	},
+
 	"discussions quality": {
 		"insightful": "very likely",
 		"relevant": "somewhat likely",
 		"off-topic": "unlikely"
 	},
+
 	"actions discussion alignment": {
 		"well-aligned": "very likely",
 		"somewhat aligned": "somewhat likely",
 		"misaligned": "unlikely"
 	},
+
 	"domain knowledge": {
 		"advanced": "very likely",
 		"proficient": "somewhat likely",
 		"beginner": "unlikely"
 	},
+
 	"communication": {
 		"clear": "very likely",
 		"adequate": "somewhat likely",
 		"unclear": "unlikely"
 	},
+
 	"problem solving": {
 		"innovative": "very likely",
 		"effective": "somewhat likely",
 		"ineffective": "unlikely"
 	},
+	
 	"actions completeness average (average)": {
 		"thorough": "somewhat unlikely",
 		"adequate": "very likely",
