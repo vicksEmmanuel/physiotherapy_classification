@@ -47,3 +47,4 @@ Jinja2
 MarkupSafe
 anthropic
 bottleneck
+flask-cors

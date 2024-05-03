@@ -1,4 +1,5 @@
 import json
+from flask_cors import CORS
 from flask import Flask, request, jsonify
 import os
 import sys
@@ -14,6 +15,7 @@ from runner.test import get_new_data_from_video
 
 def create_app():
     app = Flask(__name__)
+    CORS(app)  # Enable CORS for all routes and origins
 
     # Configure the upload folder
     app.config['UPLOAD_FOLDER'] = 'uploads'
