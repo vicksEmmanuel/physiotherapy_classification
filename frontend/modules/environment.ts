@@ -2,7 +2,7 @@ const isProduction = process.env.NEXT_PUBLIC_ENVIRONMENT === 'production';
 
 const productionEnv = {
   baseUrl: isProduction
-    ? 'https://smartsheet-app.netlify.app'
+    ? 'https://physio-video-analyzer.netlify.app'
     : 'http://localhost:3000',
   isProduction: isProduction,
   version: process.env.NEXT_PUBLIC_VERSION,
