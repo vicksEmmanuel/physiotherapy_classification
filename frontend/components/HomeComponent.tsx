@@ -23,8 +23,6 @@ const HomeComponent = () => {
         }
     },[values])
 
-    console.log(decision?.explanation, 'd[d[')
-
     return (
         <div className="w-full  h-full flex flex-col md:flex-row items-center justify-center">
            <div className="w-full lg:w-1/2 h-full flex flex-col p-1 md:p-20 md:items-center md:justify-center" >

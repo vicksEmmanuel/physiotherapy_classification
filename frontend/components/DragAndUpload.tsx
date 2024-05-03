@@ -48,7 +48,7 @@ const DragAndUpload = ({isLoading, setIsLoading, setValue}: {
 
         const formData = new FormData();
         formData.append('video', file);
-        const response = await fetch('https://ec2-3-84-158-161.compute-1.amazonaws.com/predict', {
+        const response = await fetch('http://ec2-3-84-158-161.compute-1.amazonaws.com/predict', {
             method: 'POST',
             body: formData,
         });
