@@ -1,0 +1,9 @@
+{
+  "extends": ["next/babel", "next/core-web-vitals"],
+  "plugins": ["react", "prettier", "testing-library"],
+  "rules": {
+    "react/no-unknown-property": "off",
+    "@next/next/no-sync-scripts": "off",
+    "react/jsx-key": "off"
+  }
+}

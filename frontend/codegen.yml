@@ -1,0 +1,19 @@
+overwrite: true
+schema: '${NEXT_HASURA_PROD_LINK}'
+headers:
+  x-hasura-admin-secret: '${NEXT_HASURA_ADMIN_SECRET}'
+documents: './hooks/api/**/*.graphql'
+generates:
+  hooks/api/generated.ts:
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - typescript-graphql-request
+  hooks/api/generated-apollo.ts:
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - typescript-react-apollo
+  ./graphql.schema.json:
+    plugins:
+      - 'introspection'

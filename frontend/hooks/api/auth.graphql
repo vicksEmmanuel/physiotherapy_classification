@@ -1,0 +1,41 @@
+mutation InsertOrUpdateUsers($users: [user_insert_input!]!) {
+  insert_user(
+    objects: $users
+    on_conflict: {
+      constraint: user_pkey
+      update_columns: [
+        email
+        firstName
+        lastName
+        password
+        provider
+        profileImage
+        isActive
+        updatedAt
+      ]
+    }
+  ) {
+    returning {
+      ...user
+    }
+  }
+}
+
+query checkIfUserExist($email: String, $isActive: Boolean) {
+  user(where: { email: { _eq: $email }, isActive: { _eq: $isActive } }) {
+    ...user
+  }
+}
+
+fragment user on user {
+  id
+  firstName
+  email
+  isActive
+  lastName
+  password
+  profileImage
+  provider
+  updatedAt
+  createdAt
+}

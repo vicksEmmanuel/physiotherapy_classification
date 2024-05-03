@@ -1,0 +1,15 @@
+.checkbox {
+  @apply flex justify-center items-center w-[18px] h-[18px] rounded-[50%] bg-white border-[#9ba3a1] border-[0.5px] cursor-pointer;
+}
+
+.checkbox__checked {
+  background-color: #262c2ae5;
+  border-width: 1px;
+  border-color: #262c2ae5;
+}
+
+.checkbox__checked__red {
+  background-color: white;
+  border-width: 1px;
+  border-color: red;
+}
