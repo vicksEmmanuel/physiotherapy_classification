@@ -19,8 +19,10 @@ def extract_json(text):
     json_pattern = re.compile(r'{.*}', re.DOTALL)
     text = text.replace("\\\\n", "").replace("\n","").replace("\\\\", "\\")
     json_match = json_pattern.search(text)
+    print(f"json_match: {json_match}")
     if json_match:
         json_string = json_match.group()
+        print(f"json_string: {json_string}")
         try:
             json_data = json.loads(json_string)
             return json_data
