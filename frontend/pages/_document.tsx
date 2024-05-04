@@ -14,12 +14,12 @@ class MyDocument extends Document {
 
           <meta property="og:title" content="Physio Tees" />
           <meta property="og:site_name" content="Physio Tees" />
-          <meta property="og:url" content="https://physio-tees.nelify.app" />
+          <meta property="og:url" content="https://physio-video-analyzer.netlify.app/" />
           <meta property="og:description" content="Physio Tees" />
           <meta property="og:type" content="website" />
 
           <meta property="twitter:card" content="summary_large_image" />
-          <meta property="twitter:url" content="https://physio-tees.nelify.app" />
+          <meta property="twitter:url" content="https://physio-video-analyzer.netlify.app/" />
           <meta property="twitter:title" content="Physio Tees" />
           <meta property="twitter:description" content="Physio Tees" />
         </Element>
