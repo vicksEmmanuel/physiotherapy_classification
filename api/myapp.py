@@ -17,16 +17,14 @@ from runner.test import get_new_data_from_video
 
 def extract_json(text):
     json_pattern = re.compile(r'{.*}', re.DOTALL)
-    text = text.replace("\n", "")
+    text = text.replace("\\n", "").replace("\\", "")
     json_match = json_pattern.search(text)
-
     if json_match:
         json_string = json_match.group()
         json_data = json.loads(json_string)
         return json_data
     else:
         return None
-
 
 def create_app():
     app = Flask(__name__)
