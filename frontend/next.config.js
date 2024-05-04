@@ -22,6 +22,11 @@ const nextConfig = {
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     domains: ['192.168.0.107', 'localhost', 'nomnom-image.s3.amazonaws.com'],
   },
+  experimental: {
+    serverActions: {
+      bodySizeLimit: '1000mb',
+    },
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
@@ -29,6 +34,40 @@ const nextConfig = {
     });
 
     return config;
+  },
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'X-XSS-Protection',
+            value: '1; mode=block',
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'SAMEORIGIN',
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'origin-when-cross-origin',
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'geolocation=(self), camera=(), microphone=()',
+          },
+          // Add this header to disable mixed content protection
+          {
+            key: 'Content-Security-Policy',
+            value: 'block-all-mixed-content',
+          },
+        ],
+      },
+    ];
   },
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],

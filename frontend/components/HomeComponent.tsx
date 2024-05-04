@@ -15,11 +15,17 @@ const HomeComponent = () => {
             }
         }
 
-        const resultValue = ((values as any)?.result as string)?.replaceAll("\n","").replaceAll("\\","")
+
+        const resultValue = ((values as any)?.result);
+        const decisionValue = resultValue.decision as string;
+        const decision = decisionValue?.replace(/\n*/g,"").replace(/\\+/g,"").replace(/(Action)/ig,"")
+        const selfCot = resultValue?.explanation as Array<{explanation: string, decision: string}>;
+        const selfCotWithSameDecision = selfCot.filter((e) => e.decision === decisionValue)
+        const explanation = selfCotWithSameDecision[0]?.explanation?.replace(/\n*/g,"").replace(/\\+/g,"")
 
         return {
-            grade: JSON.parse(resultValue)?.decision??'',
-            explanation: JSON.parse(resultValue)?.explanation??''
+            grade: decision ??'',
+            explanation: explanation??''
         }
     },[values])
 
