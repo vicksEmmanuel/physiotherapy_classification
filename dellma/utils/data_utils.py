@@ -9,7 +9,7 @@ import json
 def convert_list_to_dict(lst):
     return {item: item for item in lst}
 
-GRADES = ["good","brief","average"]
+GRADES = ["good","brief","average","none"]
 GRADES_OBJECT_PAIRS = convert_list_to_dict(GRADES)
 
 
@@ -20,33 +20,35 @@ def convert_data_grade_agent_supported(data, query: str=""):
         except json.JSONDecodeError:
             return data
         
+    temp_query= ""
     for item in data:
-        if item['actions']:
-            query += f"Total Actions: {', '.join(item['actions'])}\n"
-        else:
-            query += "Total Actions: None\n"
+        # if item['actions']:
+        #     query += f"Actions: {', '.join(item['actions'])}\n"
+        # else:
+        #     query += "Actions: None\n"
 
-        if not item['discussions']:
-            query += "Total Discussions: None\n"
-        else:
-            query += f"Total Discussions: {', '.join(item['discussions'])}\n"
+        # if not item['discussions']:
+        #     query += "Discussions: None\n"
+        # else:
+        #     query += f"Discussions: {', '.join(item['discussions'])}\n"
 
 
-        query += "Actions per Discussions:\n"
+        # query += "Actions_and_Discussions:\n"
         
-        for action_discussion in item['actions_and_discussions']:
-            if not action_discussion['actions']:
-                query += "  Action: None\n"
-            else:
-                query += f"  Action: {', '.join(action_discussion['actions'])}\n"
+        # for action_discussion in item['actions_and_discussions']:
+        #     if not action_discussion['actions']:
+        #         query += "  Action: None,"
+        #     else:
+        #         query += f"  Action: {' '.join(action_discussion['actions'])},"
 
-            if not action_discussion['discussions']:
-                query += "  Discussion: None\n"
-            else:
-                query += f"  Discussion: {action_discussion['discussions']}\n"
-        query += "\n\n"
+        #     if not action_discussion['discussions']:
+        #         query += "  Discussion: None\n"
+        #     else:
+        #         query += f"  Discussion: {action_discussion['discussions']}\n"
+        # query += "\n\n"
+        temp_query += f"result: {item}\n"
         
-    return query
+    return query + temp_query
 
 def get_combinations() -> List[Tuple[str, ...]]:
     combs = []

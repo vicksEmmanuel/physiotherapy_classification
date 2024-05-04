@@ -6,6 +6,8 @@ import pandas as pd
 
 import os
 import sys
+
+from util.actions import Action
 current_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.dirname(current_dir)
 sys.path.append(project_root)
@@ -23,30 +25,33 @@ from utils.data_utils import GRADES, GRADES_OBJECT_PAIRS, convert_data_grade_age
 class GradeAgent(DeLLMaAgent):
     grade: List[str] = GRADES
     grade_symbol_to_name_map: Dict[str, str] = GRADES_OBJECT_PAIRS
-    system_content = "You are a physiotherapy teacher grading students' based on the actions and discussioned used to analyse their patients."
+    system_content = "You are a physiotherapy teacher grading students' based on the actions alignment with the discussions used to analyse their patients."
+
+    tracked_actions= Action().action
+    list_actions_in_string = ', '.join(tracked_actions)
 
     states: Dict[str, Dict[str, str]] = {
         # product-agnostic state variables
         "agnostic": {
-            "actions completeness": "the completeness of the actions like knee-examination, pelvis-check etc. used to analyse their patients",
+            "actions completeness": f"the completeness of the actions like {list_actions_in_string}  etc. used to analyse their patients",
             "discussions quality": "the quality of the discussions used to analyse their patients",
-            "actions discussion alignment": "the alignment of the actions and discussions used to analyse their patients",
+            "actions discussion alignment": "what actions were performed during the discussion used to analyse their patients",
             "domain knowledge": "the domain knowledge of the students",
             "communication": "the communication of the students",
             "problem solving": "the problem solving of the students",
-            "actions detected according to the discussion timeline": "the actions detected per the discussions timeline",
-            "action detected": "the actions detected during the analysis"
+            "actions detected according to the discussion timeline": "the actions detected as regards the discussions said to have been performed by the students",
+            "action detected": f"the actions like {list_actions_in_string} detected during the analysis"
         },
         # product-specific state variables
         "specific": {
-            "actions completeness": lambda c: f"the completeness of the actions like knee-examination, pelvis-check etc. used to analyse their patients",
+            "actions completeness": f"the completeness of the actions like {list_actions_in_string} etc. used to analyse their patients",
             "discussions quality": lambda c: f"the quality of the discussions used to analyse their patients",
-            "actions discussion alignment": lambda c: f"the alignment of the actions and discussions used to analyse their patients",
+            "actions discussion alignment": lambda c: f"what actions were performed during the discussion used to analyse their patients",
             "domain knowledge": lambda c: f"the domain knowledge of the students",
             "communication": lambda c: f"the communication of the students",
             "problem solving": lambda c: f"the problem solving of the students",
-            "actions detected according to the discussion timeline": lambda c: f"the actions detected per the discussions timeline",
-            "action detected": lambda c: f"the actions detected during the analysis"
+            "actions detected according to the discussion timeline": "the actions detected as regards the discussions said to have been performed by the students",
+            "action detected": f"the actions like {list_actions_in_string} detected during the analysis"
         },
     }
 
@@ -67,7 +72,7 @@ class GradeAgent(DeLLMaAgent):
         assert set(choices).issubset(set(self.grade))
         self.choices = sorted(set(choices))
         self.path = path
-        utility_prompt = f"I'm a physiotherapy teacher grading students' based on the actions and discussioned used to analyse their patients."
+        utility_prompt = f"I'm a physiotherapy teacher grading students' based on the actions alignment with the discussions used to analyse their patients.."
 
         super().__init__(
             path,
@@ -104,16 +109,17 @@ class GradeAgent(DeLLMaAgent):
 
         if grade in data:
             grade_data = data[grade]
-            query = f"Below are the information about the actions and discussions per the grade {grade} (i.e. {self.grade_symbol_to_name_map[grade]}).\n\n"
-            query = convert_data_grade_agent_supported(grade_data, query)
+            query = f"Below are the informations about the actions and discussions data that would get the student the grade {grade} (i.e. {self.grade_symbol_to_name_map[grade]}).\n\n"
+            query += "<document_content>{"+convert_data_grade_agent_supported(grade_data, query)+"}</document_content>"
             
             return query
         else:
             return f"No data found for grade {grade}."
     
     def prepare_context(self) -> str:
-        context = f"""Below are the grades I am considering: {", ".join(self.choices)}. I would like to know which grade I should give based on the information of their previous actions and discussion and the awared grade.
-        I can only choose one grade and this is the current actions and discussions map of the student I want to grade.\n\n {json.dumps(self.current_physiotherapy_analysis_to_grade)} \n\n
+        formated_actions_and_discussion ="<document_content>{"+json.dumps(self.current_physiotherapy_analysis_to_grade)+"}</document_content>"
+        context = f"""Below are the grades I am considering: {", ".join(self.choices)}. I would like to know which grade I should give based on the information of other students previous actions and discussion and the awared grade.
+        I can only choose one grade. Here are the actions and discussions performed by the student I want to grade in analyzing their patient.\n\n {formated_actions_and_discussion} \n\n . Please provide the grade based on the information provided.
         """
         for p in self.choices:
             context += self._format_grade_context(p)

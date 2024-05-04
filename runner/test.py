@@ -34,7 +34,7 @@ from pytorchvideo.data.ava import AvaLabeledVideoFramePaths
 import json
 
 actions = Action().action
-threshold = 0.5
+threshold = 0.7
 
 def get_bboxes(inp_imgs, num_boxes):
     _, height, width = inp_imgs.shape[1:]
