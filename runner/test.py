@@ -32,9 +32,10 @@ from util.util import single_transformer,ava_inference_transform
 from pytorchvideo.models.resnet import create_resnet, create_resnet_with_roi_head
 from pytorchvideo.data.ava import AvaLabeledVideoFramePaths
 import json
+import re
 
 actions = Action().action
-threshold = 0.7
+threshold = 0.5
 
 def get_bboxes(inp_imgs, num_boxes):
     _, height, width = inp_imgs.shape[1:]

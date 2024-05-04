@@ -34,7 +34,7 @@ def inference(
     while not success:
         try:
             response = CLIENT.messages.create(
-                model="claude-3-sonnet-20240229",
+                model="claude-3-opus-20240229",
                 max_tokens=4096,
                 messages=[
                     {"role": "user", "content": query },

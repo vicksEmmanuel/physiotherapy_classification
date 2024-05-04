@@ -1,4 +1,5 @@
 import json
+import re
 from flask_cors import CORS
 from flask import Flask, request, jsonify
 import os
@@ -12,6 +13,18 @@ from pprint import pprint
 from dellma.utils.data_utils import convert_data_grade_agent_supported
 from dellma.runner.dellma_predict import process_grades
 from runner.test import get_new_data_from_video
+
+
+def extract_json(text):
+    json_pattern = re.compile(r'{.*}', re.DOTALL)
+    json_match = json_pattern.search(text)
+    if json_match:
+        json_string = json_match.group()
+        json_data = json.loads(json_string)
+        return json_data
+    else:
+        return None
+
 
 def create_app():
     app = Flask(__name__)
@@ -117,7 +130,7 @@ def create_app():
 
             result = {
                 "query": query,
-                "result": result,
+                "result": extract_json(result),
                 "actions_and_discussions": current_student_action
             }
             

@@ -19,9 +19,11 @@ const HomeComponent = () => {
         const resultValue = ((values as any)?.result);
         const decisionValue = resultValue.decision as string;
         const decision = decisionValue?.replace(/\n*/g,"").replace(/\\+/g,"").replace(/(Action)/ig,"")
-        const selfCot = resultValue?.explanation as Array<{explanation: string, decision: string}>;
-        const selfCotWithSameDecision = selfCot.filter((e) => e.decision === decisionValue)
-        const explanation = selfCotWithSameDecision[0]?.explanation?.replace(/\n*/g,"").replace(/\\+/g,"")
+
+        // const selfCot = resultValue?.explanation as Array<{explanation: string, decision: string}>;
+        // const selfCotWithSameDecision = selfCot.filter((e) => e.decision === decisionValue)
+        // const explanation = selfCotWithSameDecision[0]?.explanation?.replace(/\n*/g,"").replace(/\\+/g,"")
+        const explanation = resultValue?.explanation?.replace(/\n*/g,"").replace(/\\+/g,"")
 
         return {
             grade: decision ??'',
