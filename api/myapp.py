@@ -18,6 +18,9 @@ from runner.test import get_new_data_from_video
 def extract_json(text):
     json_pattern = re.compile(r'{.*}', re.DOTALL)
     text = text.replace("\\n", "").replace("\\", "")
+
+    print(f"Text: {text}")
+
     json_match = json_pattern.search(text)
     if json_match:
         json_string = json_match.group()
