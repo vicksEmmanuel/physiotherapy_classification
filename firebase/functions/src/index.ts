@@ -36,6 +36,7 @@ app.get('/hello', (req: any, res: any) => {
 
 app.post('/webhook', async (req: any, res: any) => {
 	try {
+		console.log('req.body', req.body);
 		const proxyResponse = await fetch(
 			'http://13.53.134.33:8080/webhook/paypal',
 			{
