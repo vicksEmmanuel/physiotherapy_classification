@@ -1,4 +1,5 @@
 /** @format */
+
 import cors = require('cors');
 import * as express from 'express';
 import * as functions from 'firebase-functions';
@@ -31,6 +32,24 @@ app.use((req, res, next) => {
 
 app.get('/hello', (req: any, res: any) => {
 	res.send('Hello from Firebase!');
+});
+
+app.post('/webhook', async (req: any, res: any) => {
+	try {
+		const proxyResponse = await fetch(
+			'http://13.53.134.33:8080/webhook/paypal',
+			{
+				method: 'POST',
+				body: JSON.stringify(req.body),
+			}
+		);
+
+		const responseData = await proxyResponse.json();
+		res.status(200).json(responseData);
+	} catch (err) {
+		console.error(err);
+		res.status(500).send(`Error ${String(err)}`);
+	}
 });
 
 app.post('/upload', async (req: any, res: any) => {
